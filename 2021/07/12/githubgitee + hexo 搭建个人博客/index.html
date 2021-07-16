@@ -21,8 +21,15 @@
 <meta property="og:image" content="https://static01.imgkr.com/temp/225f537754d6497f9a78beada4619467.png">
 <meta property="og:image" content="https://static01.imgkr.com/temp/d0b8bbb8d3a246e9ae6ec1525d524ffe.png">
 <meta property="og:image" content="https://static01.imgkr.com/temp/0f05709f567041b5874a04b52bc0d5d1.png">
+<meta property="og:image" content="https://static01.imgkr.com/temp/5d586ae319f64d7787098c2ea57248eb.png">
+<meta property="og:image" content="https://static01.imgkr.com/temp/f2e527dbc2c74047916e562d0e6dc392.png">
+<meta property="og:image" content="https://static01.imgkr.com/temp/0d738f240f9245908387fa5e3b85a3f5.png">
+<meta property="og:image" content="https://static01.imgkr.com/temp/5a61b774f6f741069dec5e9c1a85094a.png">
+<meta property="og:image" content="https://static01.imgkr.com/temp/4cad844638dc49fdb8795c6b0b3cb7fb.png">
+<meta property="og:image" content="https://static01.imgkr.com/temp/2632417ccf8444dbbf4330a27605be21.png">
+<meta property="og:image" content="https://static01.imgkr.com/temp/97a4935bd85b41749fdf131e64c00636.png">
 <meta property="article:published_time" content="2021-07-11T17:00:01.000Z">
-<meta property="article:modified_time" content="2021-07-13T16:04:54.263Z">
+<meta property="article:modified_time" content="2021-07-16T17:44:54.752Z">
 <meta property="article:author" content="apollo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://static01.imgkr.com/temp/d394c4922eb141af94a2d64fc1113ce0.png">
@@ -206,7 +213,99 @@
 <h4 id="3-2-2"><a href="#3-2-2" class="headerlink" title="3.2.2"></a>3.2.2</h4><p>仓库的命名必须按照 <strong>用户名.github.io</strong> 这个格式来</p>
 <p>选择<strong>public</strong></p>
 <p><img src="https://static01.imgkr.com/temp/0f05709f567041b5874a04b52bc0d5d1.png" alt="新建仓库2"></p>
-<h2 id="4-部署到GitHub或者Gitee"><a href="#4-部署到GitHub或者Gitee" class="headerlink" title="4.部署到GitHub或者Gitee"></a>4.部署到GitHub或者Gitee</h2><h3 id="4-1生成rsa密钥"><a href="#4-1生成rsa密钥" class="headerlink" title="4.1生成rsa密钥"></a>4.1生成rsa密钥</h3><h3 id="4-2设置-config-myl"><a href="#4-2设置-config-myl" class="headerlink" title="4.2设置_config.myl"></a>4.2设置_config.myl</h3><h3 id="4-3-主题美化"><a href="#4-3-主题美化" class="headerlink" title="4.3 主题美化"></a>4.3 主题美化</h3><p><strong>这里推荐Litten大佬的yilia主题，简洁大方，访问速度也比较快</strong></p>
+<h2 id="4-部署到GitHub或者Gitee"><a href="#4-部署到GitHub或者Gitee" class="headerlink" title="4.部署到GitHub或者Gitee"></a>4.部署到GitHub或者Gitee</h2><h3 id="4-1生成ssh密钥"><a href="#4-1生成ssh密钥" class="headerlink" title="4.1生成ssh密钥"></a>4.1生成ssh密钥</h3><p>生成密钥是为了之后不用每一次推送都输入密码</p>
+<p>控制台输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的github名&quot;</span><br><span class="line">git config --global user.email &quot;你注册github的邮箱&quot;</span><br><span class="line">ssh-keygen -t rsa -C &quot;你注册github的邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p><del>其实邮箱随便一个就行，但是这样好记一点</del></p>
+<p>第三个命令会有三个提示，全部回车默认即可</p>
+<p>生成的文件再C:\用户\用户名\.ssh，里面有三个文件，打开id_rsa.pub全部复制</p>
+<h3 id="4-2github设置ssh密钥"><a href="#4-2github设置ssh密钥" class="headerlink" title="4.2github设置ssh密钥"></a>4.2github设置ssh密钥</h3><p>依次步骤为：setting-&gt;SSH and GPG keys-&gt;然后在key框粘贴刚才id_rsa.pub里的内容</p>
+<p>如下图</p>
+<p><img src="https://static01.imgkr.com/temp/5d586ae319f64d7787098c2ea57248eb.png" alt="设置ssh_1"></p>
+<p><img src="https://static01.imgkr.com/temp/f2e527dbc2c74047916e562d0e6dc392.png" alt="设置ssh_2"></p>
+<p><img src="https://static01.imgkr.com/temp/0d738f240f9245908387fa5e3b85a3f5.png" alt="设置ssh_3"></p>
+<h3 id="4-3验证ssh密钥是否设置成功"><a href="#4-3验证ssh密钥是否设置成功" class="headerlink" title="4.3验证ssh密钥是否设置成功"></a>4.3验证ssh密钥是否设置成功</h3><p>控制台输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>成功如下图，打码部分是自己的github名 <del>可能会出现警告，不用管</del></p>
+<p><img src="https://static01.imgkr.com/temp/5a61b774f6f741069dec5e9c1a85094a.png" alt="验证ssh"></p>
+<h3 id="4-4安装推送插件"><a href="#4-4安装推送插件" class="headerlink" title="4.4安装推送插件"></a>4.4安装推送插件</h3><p>在博客根目录下控制台输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>有了这个插件才能把文章推送到github的仓库上</p>
+<h2 id="5-设置-config-myl"><a href="#5-设置-config-myl" class="headerlink" title="5.设置_config.myl"></a>5.设置_config.myl</h2><p>现在回到<strong>博客根目录</strong>，先介绍根目录下的文件夹或者文件</p>
+<p><strong>下面所有的冒号后面都有个空格</strong></p>
+<ul>
+<li>source：所写文章存放的地方</li>
+<li>themes：博客的主题</li>
+<li>_config.yml：博客的配置</li>
+<li>node_modules：依赖包</li>
+<li>public：生成的博客页面</li>
+<li>package.josn：所需模块的配置信息</li>
+</ul>
+<p><del>其它的我也不太懂了</del></p>
+<p>记事本打开_config.yml</p>
+<p><img src="https://static01.imgkr.com/temp/4cad844638dc49fdb8795c6b0b3cb7fb.png" alt="设置根目录_config_1"></p>
+<ul>
+<li>title: 网站标题，随意</li>
+<li>subtitle: 副标题，随意</li>
+<li>description: 描述，随意</li>
+<li>keyword: 关键字，随意</li>
+<li>author: 作者名称，随意</li>
+<li>language: 语言，设置为zh-CN</li>
+<li>timezone: 时区，设置为Asia/Shanghai</li>
+<li>url: 你的网站地址，设置为https://新建仓库名 <del>按着我上面的图来就行</del></li>
+</ul>
+<p>拉到最底下</p>
+<p>原先deploy下会少一些，自己加上就好 <del>我忘了少哪个了</del></p>
+<p><img src="https://static01.imgkr.com/temp/2632417ccf8444dbbf4330a27605be21.png" alt="设置根目录_config_2"></p>
+<ul>
+<li>theme: 主题，这个后面设置先不管</li>
+<li>type: 设为git</li>
+<li>repo: 仓库地址，下面介绍</li>
+<li>branch: 上传到仓库的分支，设为master</li>
+</ul>
+<p><img src="https://static01.imgkr.com/temp/97a4935bd85b41749fdf131e64c00636.png" alt="设置推送的仓库"></p>
+<p>把复制到的ssh链接粘贴到repo，注意空格</p>
+<h2 id="6-主题美化"><a href="#6-主题美化" class="headerlink" title="6.主题美化"></a>6.主题美化</h2><h3 id="6-1设置主题"><a href="#6-1设置主题" class="headerlink" title="6.1设置主题"></a>6.1设置主题</h3><p>现在只差最后一步了，选一个你喜欢的主题并下载配置</p>
+<p><strong>这里推荐Litten大佬的yilia主题，简洁大方，访问速度也比较快</strong></p>
+<p><strong>博客根目录下</strong>控制台输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
+
+<p>等待下载完毕之后，就可以把<strong>博客根目录_config.yml</strong>的themes进行设置了，把themes修改为yilia，注意空格</p>
+<p>在最末尾添加</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">jsonContent:</span><br><span class="line">    meta: <span class="literal">false</span></span><br><span class="line">    pages: <span class="literal">false</span></span><br><span class="line">    posts:</span><br><span class="line">      title: <span class="literal">true</span></span><br><span class="line">      date: <span class="literal">true</span></span><br><span class="line">      path: <span class="literal">true</span></span><br><span class="line">      text: <span class="literal">false</span></span><br><span class="line">      raw: <span class="literal">false</span></span><br><span class="line">      content: <span class="literal">false</span></span><br><span class="line">      slug: <span class="literal">false</span></span><br><span class="line">      updated: <span class="literal">false</span></span><br><span class="line">      comments: <span class="literal">false</span></span><br><span class="line">      link: <span class="literal">false</span></span><br><span class="line">      permalink: <span class="literal">false</span></span><br><span class="line">      excerpt: <span class="literal">false</span></span><br><span class="line">      categories: <span class="literal">false</span></span><br><span class="line">      tags: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2主题细节设置"><a href="#6-2主题细节设置" class="headerlink" title="6.2主题细节设置"></a>6.2主题细节设置</h3><p>下面对yilia主题进行调校，觉得这样合适了的可以略过这一步</p>
+<p>进入<strong>yilia主题根目录</strong>，打开_config.yml文件</p>
+<p><del>里面Litten大佬已经差不多写满注释了，我就不那啥了，看着改就行</del></p>
+<h2 id="7-hexo命令"><a href="#7-hexo命令" class="headerlink" title="7.hexo命令"></a>7.hexo命令</h2><h3 id="7-1推送命令"><a href="#7-1推送命令" class="headerlink" title="7.1推送命令"></a>7.1推送命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">hexo c</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hexo s: 本地测试 – 访问localhost:4000</li>
+<li>hexo g: 生成静态页面</li>
+<li>hexo d: 推送至github仓库</li>
+<li>hexo c: 清理之前生成的文件、页面</li>
+</ul>
+<h3 id="7-2写作相关"><a href="#7-2写作相关" class="headerlink" title="7.2写作相关"></a>7.2写作相关</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;标题&quot;</span><br><span class="line">hexo n page &quot;标题&quot;</span><br><span class="line">hexo n draft &quot;标题&quot;</span><br><span class="line">hexo publish &quot;标题&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hexo n: 在博客根目录source/_posts下生成.md文件，也就是你要写的博客文章</li>
+<li>hexo n page: 在博客根目录source下生成文件夹，作为独立页面使用</li>
+<li>hexo n draft: 保存到博客根目录source/_draft文件夹下，作为草稿使用</li>
+<li>hexo publish: 把草稿移动之_posts下</li>
+</ul>
+<p>Q: 怎么删除文章？</p>
+<p>A: 把博客根目录source/_posts下想删除的文章删除即可</p>
+<p><strong>博客根目录下</strong>控制台输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo c</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p><strong>开始你的博客写作吧 <del>可以去看看我的markdown语法介绍</del></strong></p>
+<h2 id="8-一些坑"><a href="#8-一些坑" class="headerlink" title="8.一些坑"></a>8.一些坑</h2><h3 id="8-1hexo-g报错"><a href="#8-1hexo-g报错" class="headerlink" title="8.1hexo g报错"></a>8.1hexo g报错</h3><h4 id="8-1-1需要文件尾…line-x-column-y"><a href="#8-1-1需要文件尾…line-x-column-y" class="headerlink" title="8.1.1需要文件尾…line:x,column:y"></a>8.1.1需要文件尾…line:x,column:y</h4><p>一般是你<strong>不是用hexo n 命令生成的文章</strong>，而是在其他地方写作然后把.md文件移动至_post文件夹下面，这样的<strong>文章开头会缺少一些东西</strong>，把它补上<del>按自己文章的标题和写作时间自行修改即可</del>即可，当然你也可以用hexo n命令新建.md文件，然后把之前写的复制粘贴进去</p>
+<p>缺失如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: markdown</span><br><span class="line">date: <span class="number">2021</span>/<span class="number">7</span>/<span class="number">11</span> <span class="number">22</span>:<span class="number">18</span>:<span class="number">25</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
 
       
 
