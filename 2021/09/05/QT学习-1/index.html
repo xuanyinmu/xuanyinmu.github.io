@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xuanyinmu.github.io">
-  <title>VTK学习-2 | APOLLO&#39;s BLOG</title>
+  <title>QT学习-1 | APOLLO&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="VTK学习-21.pipeline简介VTK的pipeline主要用于读取和创造数据，一般是为Render Engine做准备工作 采用数据流的方法将数据信息转换为图形数据，主要涉及两个类：vtkDataObject、vtkAlgorithm 2.vtkDataObject、vtkAlgorithm">
+  <meta name="description" content="QT学习-11.槽和信号 信号会在特定情况或者动作下触发，槽相当于接收并处理信号的函数  当一个类被继承时，该类的信号和槽也会被继承  一个类若要支持信号和槽，就必须从QObject或者QObject的子类继承  Q_OBJECT宏必须出现在类的私有声明中，用于启动元对象的特性   1.1常用的链接方式一个对象发送信号，另一个对象的槽接受并处理发送过来的信号 1connect(Object1,SI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VTK学习-2">
-<meta property="og:url" content="https://xuanyinmu.github.io/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-2/index.html">
+<meta property="og:title" content="QT学习-1">
+<meta property="og:url" content="https://xuanyinmu.github.io/2021/09/05/QT%E5%AD%A6%E4%B9%A0-1/index.html">
 <meta property="og:site_name" content="APOLLO&#39;s BLOG">
-<meta property="og:description" content="VTK学习-21.pipeline简介VTK的pipeline主要用于读取和创造数据，一般是为Render Engine做准备工作 采用数据流的方法将数据信息转换为图形数据，主要涉及两个类：vtkDataObject、vtkAlgorithm 2.vtkDataObject、vtkAlgorithm">
+<meta property="og:description" content="QT学习-11.槽和信号 信号会在特定情况或者动作下触发，槽相当于接收并处理信号的函数  当一个类被继承时，该类的信号和槽也会被继承  一个类若要支持信号和槽，就必须从QObject或者QObject的子类继承  Q_OBJECT宏必须出现在类的私有声明中，用于启动元对象的特性   1.1常用的链接方式一个对象发送信号，另一个对象的槽接受并处理发送过来的信号 1connect(Object1,SI">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-02T15:02:46.000Z">
-<meta property="article:modified_time" content="2021-09-02T15:03:11.057Z">
+<meta property="article:published_time" content="2021-09-05T12:48:02.000Z">
+<meta property="article:modified_time" content="2021-09-05T12:49:45.929Z">
 <meta property="article:author" content="apollo">
-<meta property="article:tag" content="VTK">
+<meta property="article:tag" content="Qt">
 <meta name="twitter:card" content="summary">
   
   
@@ -137,29 +137,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-VTK学习-2" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-QT学习-1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      VTK学习-2
+      QT学习-1
     </h1>
   
 
         
-        <a href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-2/" class="archive-article-date">
-  	<time datetime="2021-09-02T15:02:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
+        <a href="/2021/09/05/QT%E5%AD%A6%E4%B9%A0-1/" class="archive-article-date">
+  	<time datetime="2021-09-05T12:48:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="VTK学习-2"><a href="#VTK学习-2" class="headerlink" title="VTK学习-2"></a>VTK学习-2</h1><h2 id="1-pipeline简介"><a href="#1-pipeline简介" class="headerlink" title="1.pipeline简介"></a>1.pipeline简介</h2><p><strong>VTK的pipeline主要用于读取和创造数据，一般是为Render Engine做准备工作</strong></p>
-<p><strong>采用数据流的方法将数据信息转换为图形数据，主要涉及两个类：vtkDataObject、vtkAlgorithm</strong></p>
-<h2 id="2-vtkDataObject、vtkAlgorithm"><a href="#2-vtkDataObject、vtkAlgorithm" class="headerlink" title="2.vtkDataObject、vtkAlgorithm"></a>2.vtkDataObject、vtkAlgorithm</h2>
+        <h1 id="QT学习-1"><a href="#QT学习-1" class="headerlink" title="QT学习-1"></a>QT学习-1</h1><h2 id="1-槽和信号"><a href="#1-槽和信号" class="headerlink" title="1.槽和信号"></a>1.槽和信号</h2><ul>
+<li><p>信号会在特定情况或者动作下触发，槽相当于接收并处理信号的函数</p>
+</li>
+<li><p>当一个类被继承时，该类的信号和槽也会被继承</p>
+</li>
+<li><p>一个类若要支持信号和槽，就必须从QObject或者QObject的子类继承</p>
+</li>
+<li><p>Q_OBJECT宏必须出现在类的私有声明中，用于启动元对象的特性</p>
+</li>
+</ul>
+<h3 id="1-1常用的链接方式"><a href="#1-1常用的链接方式" class="headerlink" title="1.1常用的链接方式"></a>1.1常用的链接方式</h3><p>一个对象发送信号，另一个对象的槽接受并处理发送过来的信号</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">connect</span>(Object1,<span class="built_in">SIGNAL</span>(signal),Object2,<span class="built_in">SLOT</span>(slot));</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2一个信号可以与另一个信号相连"><a href="#1-2一个信号可以与另一个信号相连" class="headerlink" title="1.2一个信号可以与另一个信号相连"></a>1.2一个信号可以与另一个信号相连</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">connect</span>(Object1,<span class="built_in">SIGNAL</span>(signal1),Object2,<span class="built_in">SIGNAL</span>(signal1));</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3同一信号可以与多个槽相连"><a href="#1-3同一信号可以与多个槽相连" class="headerlink" title="1.3同一信号可以与多个槽相连"></a>1.3同一信号可以与多个槽相连</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4同一个槽可以响应多个信号"><a href="#1-4同一个槽可以响应多个信号" class="headerlink" title="1.4同一个槽可以响应多个信号"></a>1.4同一个槽可以响应多个信号</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -172,7 +188,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">VTK</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
         		</li>
       		
 		</ul>
@@ -191,18 +207,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/09/05/QT%E5%AD%A6%E4%B9%A0-1/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/09/05/QT%E5%AD%A6%E4%B9%A0-2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          QT学习-1
+          QT学习-2
         
       </div>
     </a>
   
   
-    <a href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">VTK学习-1</div>
+    <a href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VTK学习-2</div>
       <i class="icon-circle-right"></i>
     </a>
   

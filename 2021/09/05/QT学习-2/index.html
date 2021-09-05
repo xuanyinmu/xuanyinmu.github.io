@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xuanyinmu.github.io">
-  <title>VTK学习-2 | APOLLO&#39;s BLOG</title>
+  <title>QT学习-2 | APOLLO&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="VTK学习-21.pipeline简介VTK的pipeline主要用于读取和创造数据，一般是为Render Engine做准备工作 采用数据流的方法将数据信息转换为图形数据，主要涉及两个类：vtkDataObject、vtkAlgorithm 2.vtkDataObject、vtkAlgorithm">
+  <meta name="description" content="QT学习-21.操作字符串QString1.1QString+1234QString str1 &#x3D; &quot;welcome &quot;;str1 &#x3D; str1 + &quot;to you! &quot;; &#x2F;&#x2F; str1 &#x3D; &quot;welcome to you!&quot;;&#x2F;&#x2F; 优化写法QString str1 &#x3D; tr(&quot;welcome %1&quot;).arg(tr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VTK学习-2">
-<meta property="og:url" content="https://xuanyinmu.github.io/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-2/index.html">
+<meta property="og:title" content="QT学习-2">
+<meta property="og:url" content="https://xuanyinmu.github.io/2021/09/05/QT%E5%AD%A6%E4%B9%A0-2/index.html">
 <meta property="og:site_name" content="APOLLO&#39;s BLOG">
-<meta property="og:description" content="VTK学习-21.pipeline简介VTK的pipeline主要用于读取和创造数据，一般是为Render Engine做准备工作 采用数据流的方法将数据信息转换为图形数据，主要涉及两个类：vtkDataObject、vtkAlgorithm 2.vtkDataObject、vtkAlgorithm">
+<meta property="og:description" content="QT学习-21.操作字符串QString1.1QString+1234QString str1 &#x3D; &quot;welcome &quot;;str1 &#x3D; str1 + &quot;to you! &quot;; &#x2F;&#x2F; str1 &#x3D; &quot;welcome to you!&quot;;&#x2F;&#x2F; 优化写法QString str1 &#x3D; tr(&quot;welcome %1&quot;).arg(tr">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-02T15:02:46.000Z">
-<meta property="article:modified_time" content="2021-09-02T15:03:11.057Z">
+<meta property="article:published_time" content="2021-09-05T12:48:26.000Z">
+<meta property="article:modified_time" content="2021-09-05T12:49:34.528Z">
 <meta property="article:author" content="apollo">
-<meta property="article:tag" content="VTK">
+<meta property="article:tag" content="Qt">
 <meta name="twitter:card" content="summary">
   
   
@@ -137,29 +137,280 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-VTK学习-2" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-QT学习-2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      VTK学习-2
+      QT学习-2
     </h1>
   
 
         
-        <a href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-2/" class="archive-article-date">
-  	<time datetime="2021-09-02T15:02:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
+        <a href="/2021/09/05/QT%E5%AD%A6%E4%B9%A0-2/" class="archive-article-date">
+  	<time datetime="2021-09-05T12:48:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="VTK学习-2"><a href="#VTK学习-2" class="headerlink" title="VTK学习-2"></a>VTK学习-2</h1><h2 id="1-pipeline简介"><a href="#1-pipeline简介" class="headerlink" title="1.pipeline简介"></a>1.pipeline简介</h2><p><strong>VTK的pipeline主要用于读取和创造数据，一般是为Render Engine做准备工作</strong></p>
-<p><strong>采用数据流的方法将数据信息转换为图形数据，主要涉及两个类：vtkDataObject、vtkAlgorithm</strong></p>
-<h2 id="2-vtkDataObject、vtkAlgorithm"><a href="#2-vtkDataObject、vtkAlgorithm" class="headerlink" title="2.vtkDataObject、vtkAlgorithm"></a>2.vtkDataObject、vtkAlgorithm</h2>
+        <h1 id="QT学习-2"><a href="#QT学习-2" class="headerlink" title="QT学习-2"></a>QT学习-2</h1><h2 id="1-操作字符串QString"><a href="#1-操作字符串QString" class="headerlink" title="1.操作字符串QString"></a>1.操作字符串QString</h2><h3 id="1-1QString"><a href="#1-1QString" class="headerlink" title="1.1QString+"></a>1.1QString+</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">QString str1 = <span class="string">&quot;welcome &quot;</span>;</span><br><span class="line">str1 = str1 + <span class="string">&quot;to you! &quot;</span>; <span class="comment">// str1 = &quot;welcome to you!&quot;;</span></span><br><span class="line"><span class="comment">// 优化写法</span></span><br><span class="line">QString str1 = <span class="built_in">tr</span>(<span class="string">&quot;welcome %1&quot;</span>).<span class="built_in">arg</span>(<span class="built_in">tr</span>(<span class="string">&quot;to you&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2QString"><a href="#1-2QString" class="headerlink" title="1.2QString +="></a>1.2QString +=</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QString str2 = <span class="string">&quot;Hello, &quot;</span>;</span><br><span class="line">str2 += <span class="string">&quot;World!&quot;</span>; <span class="comment">// str2 = &quot;Hello World!&quot;;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3QString-append"><a href="#1-3QString-append" class="headerlink" title="1.3QString::append()"></a>1.3QString::append()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">QStirng str1 = <span class="string">&quot;Welcome &quot;</span>;</span><br><span class="line">QString str2 = <span class="string">&quot;to &quot;</span>;</span><br><span class="line">str1.<span class="built_in">append</span>(str2);	<span class="comment">// str1 = &quot;Welcome to&quot;;</span></span><br><span class="line">str1.<span class="built_in">append</span>(<span class="string">&quot;you! &quot;</span>);	<span class="comment">// str1 = &quot;Welcome to you! &quot;;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4QString-arg"><a href="#1-4QString-arg" class="headerlink" title="1.4QString::arg()"></a>1.4QString::arg()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类型安全 推荐这个</span></span><br><span class="line">QString str;</span><br><span class="line">str = <span class="built_in">QString</span>(<span class="string">&quot;%1 was born in %2.&quot;</span>).<span class="built_in">arg</span>(<span class="string">&quot;John&quot;</span>).<span class="built_in">arg</span>(<span class="number">1998</span>);	<span class="comment">// str = &quot;John was born in 1998&quot;;</span></span><br><span class="line"><span class="comment">// %n的顺序可以改变</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5组合字符串"><a href="#1-5组合字符串" class="headerlink" title="1.5组合字符串"></a>1.5组合字符串</h3><ul>
+<li>insert()：在特定位置插入</li>
+<li>prepend()：在原字符串开头插入</li>
+<li>replace()：用指定字符串代替原字符串中的某些字符</li>
+</ul>
+<h3 id="1-6QString-trimmed"><a href="#1-6QString-trimmed" class="headerlink" title="1.6QString::trimmed()"></a>1.6QString::trimmed()</h3><p>移除字符串两端的空白字符</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QString str = <span class="string">&quot; Welcome \t to \n you!	&quot;</span>;</span><br><span class="line">str = str.<span class="built_in">trimmed</span>();	<span class="comment">// str = &quot;Welcome \t to \n you!&quot;;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-7QString-simplified"><a href="#1-7QString-simplified" class="headerlink" title="1.7QString::simplified()"></a>1.7QString::simplified()</h3><p>移除字符串两端的空白字符，使用单个<strong>“ ”</strong>代替字符串中出现的空白字符(\t \n之类的)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QString str = <span class="string">&quot; Welcome \t to \n you!	&quot;</span>;</span><br><span class="line">str = str.<span class="built_in">simplified</span>();	<span class="comment">// str = &quot;Welcome \t to \n you!&quot;;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-查询字符串"><a href="#2-查询字符串" class="headerlink" title="2.查询字符串"></a>2.查询字符串</h2><h3 id="2-1QString-startsWith"><a href="#2-1QString-startsWith" class="headerlink" title="2.1QString::startsWith()"></a>2.1QString::startsWith()</h3><p>第一个参数指定一个字符串，第二个参数指定是否大小写敏感</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QString str = <span class="string">&quot;Welcome to you! &quot;</span>;</span><br><span class="line">str.<span class="built_in">startsWith</span>(<span class="string">&quot;Welcome&quot;</span>,Qt::CaseSensitive); <span class="comment">// 返回值为true</span></span><br><span class="line">str.<span class="built_in">startsWith</span>(<span class="string">&quot;you&quot;</span>,Qt::CaseSensitive); <span class="comment">// 返回值为false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2QString-endsWith"><a href="#2-2QString-endsWith" class="headerlink" title="2.2QString::endsWith()"></a>2.2QString::endsWith()</h3><p>与startsWith类似</p>
+<h3 id="2-3QString-contains"><a href="#2-3QString-contains" class="headerlink" title="2.3QString::contains()"></a>2.3QString::contains()</h3><p>判断一个指定的字符串是否出现过</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QString str = <span class="string">&quot;Welcome to you! &quot;</span>;</span><br><span class="line">str.<span class="built_in">contains</span>(<span class="string">&quot;Welcome&quot;</span>,Qt::CaseSensitive); <span class="comment">// 返回值为true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4compare-const-QString-amp-const-QString-amp-Qt-CaseSensivity"><a href="#2-4compare-const-QString-amp-const-QString-amp-Qt-CaseSensivity" class="headerlink" title="2.4compare(const QString&amp;,const QString&amp;,Qt::CaseSensivity);"></a>2.4compare(const QString&amp;,const QString&amp;,Qt::CaseSensivity);</h3><p>前面字符串小于后面返回负数，等于返回0，大于返回正数</p>
+<h2 id="3-字符串转换"><a href="#3-字符串转换" class="headerlink" title="3.字符串转换"></a>3.字符串转换</h2><h3 id="3-1QString-toInt"><a href="#3-1QString-toInt" class="headerlink" title="3.1QString::toInt()"></a>3.1QString::toInt()</h3><p>第一个参数是<strong>返回转换的状态</strong>，成功true，失败false；</p>
+<p>第二个参数是<strong>转换的基数</strong>，<strong>默认为10</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QString str = <span class="string">&quot;125&quot;</span>;</span><br><span class="line"><span class="keyword">bool</span> ok;</span><br><span class="line"><span class="keyword">int</span> hex = str.<span class="built_in">toInt</span>(&amp;ok,<span class="number">10</span>); <span class="comment">// ok = true,hex = 125</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2QString-toDouble"><a href="#3-2QString-toDouble" class="headerlink" title="3.2QString::toDouble()"></a>3.2QString::toDouble()</h3><p>与上类似</p>
+<h3 id="3-3QString-toFloat"><a href="#3-3QString-toFloat" class="headerlink" title="3.3QString::toFloat()"></a>3.3QString::toFloat()</h3><p>与上类似</p>
+<h3 id="3-4QString-toLong"><a href="#3-4QString-toLong" class="headerlink" title="3.4QString::toLong()"></a>3.4QString::toLong()</h3><p>与上类似</p>
+<h3 id="3-5QString-toLongLong"><a href="#3-5QString-toLongLong" class="headerlink" title="3.5QString::toLongLong()"></a>3.5QString::toLongLong()</h3><p>与上类似</p>
+<h3 id="3-6qDebug"><a href="#3-6qDebug" class="headerlink" title="3.6qDebug()"></a>3.6qDebug()</h3><p>支持输出Qt对象</p>
+<h2 id="4-容器类"><a href="#4-容器类" class="headerlink" title="4.容器类"></a>4.容器类</h2><p>包含通常使用的大多数数据类型</p>
+<p>Qt的<strong>QObject及其他的子类</strong>是<strong>不能</strong>存储在容器中</p>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QList&lt;QToolBar&gt; list;	<span class="comment">// 无法通过编译</span></span><br></pre></td></tr></table></figure>
+
+<p>但是<strong>可以存放</strong>QObject及其子类的<strong>指针</strong></p>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QList&lt;QToolBar*&gt;list;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-1QList"><a href="#4-1QList" class="headerlink" title="4.1QList"></a>4.1QList</h3><ul>
+<li><strong>可以使用下标</strong>进行访问</li>
+<li>QList::append：追加</li>
+<li>QList::prepend()：追加</li>
+</ul>
+<h4 id="4-1-1QList子类"><a href="#4-1-1QList子类" class="headerlink" title="4.1.1QList子类"></a>4.1.1QList子类</h4><ul>
+<li>QItemSelection</li>
+<li>QQueue</li>
+<li>QsignalSpy</li>
+<li>QStringList</li>
+<li>QTestEventList</li>
+</ul>
+<h3 id="4-2QLinkedList"><a href="#4-2QLinkedList" class="headerlink" title="4.2QLinkedList"></a>4.2QLinkedList</h3><p><strong>链式列表</strong>，以非连续的内存块保存数据</p>
+<p>不能使用下标，当有一个很大的列表进行插入时，比QList快</p>
+<h3 id="4-3QVector"><a href="#4-3QVector" class="headerlink" title="4.3QVector"></a>4.3QVector</h3><p>既可以用下标，也可以用迭代器访问</p>
+<h4 id="4-3-1Qvector子类"><a href="#4-3-1Qvector子类" class="headerlink" title="4.3.1Qvector子类"></a>4.3.1Qvector子类</h4><ul>
+<li>Qpolygon</li>
+<li>QpolygonF</li>
+<li>QStack</li>
+</ul>
+<h3 id="4-4STL风格迭代器"><a href="#4-4STL风格迭代器" class="headerlink" title="4.4STL风格迭代器"></a>4.4STL风格迭代器</h3><p>Qt提供两种类型的STL风格迭代器</p>
+<ul>
+<li>只读</li>
+<li>读写</li>
+</ul>
+<p>只读比读写快，尽可能的使用只读</p>
+<h3 id="4-5QMap"><a href="#4-5QMap" class="headerlink" title="4.5QMap"></a>4.5QMap</h3><p>一键多值：</p>
+<ul>
+<li>QMap&lt;Key,T&gt;::insertMulti()</li>
+<li>QMap&lt;Key,T&gt;::values()</li>
+<li>QMultiMap&lt;Key,T&gt;容器</li>
+</ul>
+<h3 id="4-6QHash"><a href="#4-6QHash" class="headerlink" title="4.6QHash"></a>4.6QHash</h3><p>子类**QMultiHash&lt;Key,T&gt;**实现一键多值</p>
+<h3 id="4-7QVariant"><a href="#4-7QVariant" class="headerlink" title="4.7QVariant"></a>4.7QVariant</h3><p>与<strong>对象属性</strong>、<strong>数据库</strong>功能有关</p>
+<p>可以保存以下类型的值及容器</p>
+<ul>
+<li>Qcolor</li>
+<li>QBrush</li>
+<li>QFont</li>
+<li>QFen</li>
+<li>QRect</li>
+<li>QString</li>
+<li>QSize</li>
+</ul>
+<h2 id="5-常用算法"><a href="#5-常用算法" class="headerlink" title="5.常用算法"></a>5.常用算法</h2><ul>
+<li>qAbs(a)：返回a的绝对值</li>
+<li>qMax(a,b)：返回a,b两个值中的最大值</li>
+<li>qRound(a)：返回与浮点数a最接近的一个整数</li>
+<li>qSwap(a,b)：交换a,b的值</li>
+</ul>
+<h2 id="6-正则表达式-QRegExp"><a href="#6-正则表达式-QRegExp" class="headerlink" title="6.正则表达式-QRegExp"></a>6.正则表达式-QRegExp</h2><ol>
+<li>单个字符：[a-z]，可以匹配所有小写英文字母</li>
+<li>表达式多次出现：x[1,2]，x至少出现1次，至多出现2次</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">量词</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">？</td>
+<td align="center">匹配0或1次</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">匹配1或多次</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">匹配0或多次</td>
+</tr>
+<tr>
+<td align="center">[n]</td>
+<td align="center">匹配n次</td>
+</tr>
+<tr>
+<td align="center">[n,]</td>
+<td align="center">至少匹配n次</td>
+</tr>
+<tr>
+<td align="center">[,m]</td>
+<td align="center">至多匹配m次</td>
+</tr>
+<tr>
+<td align="center">[n,m]</td>
+<td align="center">至少n次，至多m次</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">^</td>
+<td align="center">在字符串开头匹配</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="center">在字符串结尾匹配</td>
+</tr>
+<tr>
+<td align="center">\b</td>
+<td align="center">单词边界</td>
+</tr>
+<tr>
+<td align="center">\B</td>
+<td align="center">非单词边界</td>
+</tr>
+<tr>
+<td align="center">(?=E)</td>
+<td align="center">表达式后紧随E才匹配</td>
+</tr>
+<tr>
+<td align="center">(?!E)</td>
+<td align="center">表达式后不紧随E才匹配</td>
+</tr>
+</tbody></table>
+<p>using\s+namespace，匹配为using namespace</p>
+<p>\s表示匹配一个空白字符</p>
+<h2 id="7-控件"><a href="#7-控件" class="headerlink" title="7.控件"></a>7.控件</h2><h3 id="7-1按钮组-Buttons"><a href="#7-1按钮组-Buttons" class="headerlink" title="7.1按钮组 - Buttons"></a>7.1按钮组 - Buttons</h3><ul>
+<li>Push Button：按钮</li>
+<li>Tool Button：工具按钮</li>
+<li>Radio Button：单选按钮</li>
+<li>Check Box：复选框</li>
+<li>Command Link Button：命令链接按钮</li>
+<li>Dialog Button Box：对话框按钮盒</li>
+</ul>
+<h3 id="7-2输入部件组-Input-Widgets"><a href="#7-2输入部件组-Input-Widgets" class="headerlink" title="7.2输入部件组 - Input Widgets"></a>7.2输入部件组 - Input Widgets</h3><ul>
+<li>Combo Box：组合框</li>
+<li>Font Combo Box：字体组合框</li>
+<li>Line Edit：行编辑器</li>
+<li>Text Edit：文本编辑器</li>
+<li>Plain Text Edit：纯文本编辑器</li>
+<li>Spin Box：数字显示框</li>
+<li>Double Spin Box：双自旋盒</li>
+<li>Time Edit：时间编辑</li>
+<li>Date Edit：日期编辑</li>
+<li>Date/Time Edit：日期/时间编辑</li>
+<li>Dial：拨号</li>
+<li>Horizontal Scroll Bar：横向滚动条</li>
+<li>Vertical Scroll Bar：垂直滚动条</li>
+<li>Horizontal Slider：横向滑块</li>
+<li>Vertical Slider：垂直滑块</li>
+<li>Key Sequence Edit：按键序列编辑框</li>
+</ul>
+<h4 id="7-2-1QDateTime"><a href="#7-2-1QDateTime" class="headerlink" title="7.2.1QDateTime"></a>7.2.1QDateTime</h4><p>可以用来获取系统时间</p>
+<h4 id="7-2-2QTimer"><a href="#7-2-2QTimer" class="headerlink" title="7.2.2QTimer"></a>7.2.2QTimer</h4><ul>
+<li>start(int time)：可重复触发，可以利用stop()将定时器关掉</li>
+<li>setSingleShot(true)：仅启动一次</li>
+</ul>
+<h3 id="7-3显示控件组-Display-Widgets"><a href="#7-3显示控件组-Display-Widgets" class="headerlink" title="7.3显示控件组 - Display Widgets"></a>7.3显示控件组 - Display Widgets</h3><ul>
+<li>Label：标签</li>
+<li>Text Browser：文本浏览器</li>
+<li>Graphics View：图形视图</li>
+<li>Calendar Widget：日历</li>
+<li>LCD Number：液晶数字</li>
+<li>Progress Bar：进度条</li>
+<li>Horizontal Line：水平线</li>
+<li>Vertical Line：垂直线</li>
+<li>OpenGL Widget：开放式图形工具</li>
+<li>QQuickWidget：嵌入QML工具</li>
+</ul>
+<h4 id="7-3-1QTextBrowser"><a href="#7-3-1QTextBrowser" class="headerlink" title="7.3.1QTextBrowser"></a>7.3.1QTextBrowser</h4><p>几个有用的槽：</p>
+<ul>
+<li>virtual viod backward()</li>
+<li>virtual void forward()</li>
+<li>virtual viod home()</li>
+</ul>
+<p>通过链接这几个槽可以实现翻页的效果</p>
+<h3 id="7-4布局管理组-Layouts"><a href="#7-4布局管理组-Layouts" class="headerlink" title="7.4布局管理组 - Layouts"></a>7.4布局管理组 - Layouts</h3><ul>
+<li>Vertical Layout：垂直布局</li>
+<li>Horizontal Layout：横向（水平）布局</li>
+<li>Grid Layout：网格布局</li>
+<li>Form Layout：表单布局</li>
+</ul>
+<h3 id="7-5容器组-Containers"><a href="#7-5容器组-Containers" class="headerlink" title="7.5容器组 - Containers"></a>7.5容器组 - Containers</h3><ul>
+<li><p>Group Box：组框</p>
+</li>
+<li><p>Scroll Area：滚动区域</p>
+</li>
+<li><p>Tool Box：工具箱</p>
+</li>
+<li><p>Tab Widget：标签小部件</p>
+</li>
+<li><p>Stacked Widget：堆叠部件</p>
+</li>
+<li><p>Frame：帧</p>
+</li>
+<li><p>Widget：小部件</p>
+</li>
+<li><p>MDI Area：MDI区域</p>
+</li>
+<li><p>Dock Widget：停靠窗体部件</p>
+</li>
+<li><p>QAxWidget：封装Flash的ActiveX控件</p>
+</li>
+</ul>
+<h3 id="7-6项目视图组-Item-Views"><a href="#7-6项目视图组-Item-Views" class="headerlink" title="7.6项目视图组 - Item Views"></a>7.6项目视图组 - Item Views</h3><ul>
+<li>List View：清单视图</li>
+<li>Tree View：树形视图</li>
+<li>Table View：表视图</li>
+<li>Column View：列视图</li>
+</ul>
+
       
 
       
@@ -172,7 +423,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">VTK</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
         		</li>
       		
 		</ul>
@@ -191,18 +442,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/09/05/QT%E5%AD%A6%E4%B9%A0-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          QT学习-1
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">VTK学习-1</div>
+    <a href="/2021/09/05/QT%E5%AD%A6%E4%B9%A0-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">QT学习-1</div>
       <i class="icon-circle-right"></i>
     </a>
   
