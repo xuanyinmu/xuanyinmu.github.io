@@ -136,6 +136,215 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-githubgitee + hexo 搭建个人博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/12/githubgitee%20+%20hexo%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">个人博客</a>
+    </h1>
+  
+
+        
+        <a href="/2021/07/12/githubgitee%20+%20hexo%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
+  	<time datetime="2021-07-11T17:00:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="github-gitee-hexo-搭建个人博客"><a href="#github-gitee-hexo-搭建个人博客" class="headerlink" title="github/gitee + hexo 搭建个人博客"></a>github/gitee + hexo 搭建个人博客</h1><p>博客需要<strong>node.js、git、hexo、github/gitee</strong>的支持</p>
+<h2 id="1-下载node-js、git"><a href="#1-下载node-js、git" class="headerlink" title="1.下载node.js、git"></a>1.下载node.js、git</h2><p>点击下面的即可进入下载</p>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">node.js官网</a>    <a target="_blank" rel="noopener" href="https://git-scm.com/">git官网</a>    <a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/git-for-windows/">git镜像</a>    <a target="_blank" rel="noopener" href="https://github.com/">github官网</a>    <a target="_blank" rel="noopener" href="https://gitee.com/">gitee官网</a></p>
+<p><strong>node.js建议下载稳定版，git建议最新版的exe文件</strong></p>
+<p><img src="https://static01.imgkr.com/temp/d394c4922eb141af94a2d64fc1113ce0.png" alt="node.js官网"><img src="https://static01.imgkr.com/temp/bfb1fba2ffa445f1a7dfef9ed679f18d.png" alt="git镜像"></p>
+<p>node.js和git的安装除了安装位置自己选<del>当然也可以默认</del>之外，全部默认即可</p>
+<p>GitHub或者Gitee账号按照提示进行注册就行</p>
+<p>在控制台中输入下面命令并回车</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<p><strong>成功安装</strong>如下图，如果没有出现类似下图的提示，可能是环境变量的问题，百度解决</p>
+<p><img src="https://static01.imgkr.com/temp/31a56edaebf447ac8632d2978a41bc39.png" alt="验证nodejs和git"></p>
+<h2 id="2-安装cnpm、hexo框架"><a href="#2-安装cnpm、hexo框架" class="headerlink" title="2.安装cnpm、hexo框架"></a>2.安装cnpm、hexo框架</h2><p>首先确定是可以直接用npm安装hexo，但是会很慢，所以先下载镜像cnpm，再通过cnpm来下载hexo</p>
+<h3 id="2-1安装cnpm"><a href="#2-1安装cnpm" class="headerlink" title="2.1安装cnpm"></a>2.1安装cnpm</h3><p>控制台输入下面命令并回车</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<p>上面的这条命令是临时的，当然也可以设定永远使用这个镜像来下载，具体自行百度</p>
+<p>安装过程会出现警告，不用管</p>
+<h3 id="2-2安装hexo"><a href="#2-2安装hexo" class="headerlink" title="2.2安装hexo"></a>2.2安装hexo</h3><p>控制台输入下面命令并回车</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>hexo安装完成后控制台输入下面命令验证安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+<p><strong>成功安装</strong>如下图</p>
+<p><img src="https://static01.imgkr.com/temp/225f537754d6497f9a78beada4619467.png" alt="hexo验证安装"></p>
+<h3 id="2-3本地测试"><a href="#2-3本地测试" class="headerlink" title="2.3本地测试"></a>2.3本地测试</h3><p>控制台<del>cd命令</del>把目录切到想存放博客的地方，建议放在C盘外任一盘的根目录，方便查找修改</p>
+<p>输入下面命令并回车<del>blog可以改成其他名字，这里只是为了方便</del></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+
+<p>这条命令完之后会新建出一个博客文件夹，里面包含各种配置文件，等下会进行介绍</p>
+<p>现在可以看一下新建的博客</p>
+<p>在<strong>博客根目录下</strong><del>刚才命令产生的blog文件夹</del>，输入下面命令并回车</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器，输入<strong>localhost:4000</strong><del>在上方平时输网址的地方</del>，打开后可以看到初始的博客</p>
+<p><del>图就不放了，不想再重新搞一边了</del></p>
+<h2 id="3-GitHub或者Gitee仓库"><a href="#3-GitHub或者Gitee仓库" class="headerlink" title="3.GitHub或者Gitee仓库"></a>3.GitHub或者Gitee仓库</h2><h3 id="3-1注册账号"><a href="#3-1注册账号" class="headerlink" title="3.1注册账号"></a>3.1注册账号</h3><p>按照提示一步一步来就行，实在不会百度，这里不进行赘述了</p>
+<h3 id="3-2新建仓库"><a href="#3-2新建仓库" class="headerlink" title="3.2新建仓库"></a>3.2新建仓库</h3><p>本文以<a target="_blank" rel="noopener" href="https://github.com/">github</a>为例</p>
+<h4 id="3-2-1"><a href="#3-2-1" class="headerlink" title="3.2.1"></a>3.2.1</h4><p><img src="https://static01.imgkr.com/temp/d0b8bbb8d3a246e9ae6ec1525d524ffe.png" alt="新建仓库1"></p>
+<h4 id="3-2-2"><a href="#3-2-2" class="headerlink" title="3.2.2"></a>3.2.2</h4><p>仓库的命名必须按照 <strong>用户名.github.io</strong> 这个格式来</p>
+<p>选择<strong>public</strong></p>
+<p><img src="https://static01.imgkr.com/temp/0f05709f567041b5874a04b52bc0d5d1.png" alt="新建仓库2"></p>
+<h2 id="4-部署到GitHub或者Gitee"><a href="#4-部署到GitHub或者Gitee" class="headerlink" title="4.部署到GitHub或者Gitee"></a>4.部署到GitHub或者Gitee</h2><h3 id="4-1生成ssh密钥"><a href="#4-1生成ssh密钥" class="headerlink" title="4.1生成ssh密钥"></a>4.1生成ssh密钥</h3><p>生成密钥是为了之后不用每一次推送都输入密码</p>
+<p>控制台输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的github名&quot;</span><br><span class="line">git config --global user.email &quot;你注册github的邮箱&quot;</span><br><span class="line">ssh-keygen -t rsa -C &quot;你注册github的邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p><del>其实邮箱随便一个就行，但是这样好记一点</del></p>
+<p>第三个命令会有三个提示，全部回车默认即可</p>
+<p>生成的文件再C:\用户\用户名\.ssh，里面有三个文件，打开id_rsa.pub全部复制</p>
+<h3 id="4-2github设置ssh密钥"><a href="#4-2github设置ssh密钥" class="headerlink" title="4.2github设置ssh密钥"></a>4.2github设置ssh密钥</h3><p>依次步骤为：setting-&gt;SSH and GPG keys-&gt;然后在key框粘贴刚才id_rsa.pub里的内容</p>
+<p>如下图</p>
+<p><img src="https://static01.imgkr.com/temp/5d586ae319f64d7787098c2ea57248eb.png" alt="设置ssh_1"></p>
+<p><img src="https://static01.imgkr.com/temp/f2e527dbc2c74047916e562d0e6dc392.png" alt="设置ssh_2"></p>
+<p><img src="https://static01.imgkr.com/temp/0d738f240f9245908387fa5e3b85a3f5.png" alt="设置ssh_3"></p>
+<h3 id="4-3验证ssh密钥是否设置成功"><a href="#4-3验证ssh密钥是否设置成功" class="headerlink" title="4.3验证ssh密钥是否设置成功"></a>4.3验证ssh密钥是否设置成功</h3><p>控制台输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>成功如下图，打码部分是自己的github名 <del>可能会出现警告，不用管</del></p>
+<p><img src="https://static01.imgkr.com/temp/5a61b774f6f741069dec5e9c1a85094a.png" alt="验证ssh"></p>
+<h3 id="4-4安装推送插件"><a href="#4-4安装推送插件" class="headerlink" title="4.4安装推送插件"></a>4.4安装推送插件</h3><p>在博客根目录下控制台输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>有了这个插件才能把文章推送到github的仓库上</p>
+<h2 id="5-设置-config-myl"><a href="#5-设置-config-myl" class="headerlink" title="5.设置_config.myl"></a>5.设置_config.myl</h2><p>现在回到<strong>博客根目录</strong>，先介绍根目录下的文件夹或者文件</p>
+<p><strong>下面所有的冒号后面都有个空格</strong></p>
+<ul>
+<li>source：所写文章存放的地方</li>
+<li>themes：博客的主题</li>
+<li>_config.yml：博客的配置</li>
+<li>node_modules：依赖包</li>
+<li>public：生成的博客页面</li>
+<li>package.josn：所需模块的配置信息</li>
+</ul>
+<p><del>其它的我也不太懂了</del></p>
+<p>记事本打开_config.yml</p>
+<p><img src="https://static01.imgkr.com/temp/4cad844638dc49fdb8795c6b0b3cb7fb.png" alt="设置根目录_config_1"></p>
+<ul>
+<li>title: 网站标题，随意</li>
+<li>subtitle: 副标题，随意</li>
+<li>description: 描述，随意</li>
+<li>keyword: 关键字，随意</li>
+<li>author: 作者名称，随意</li>
+<li>language: 语言，设置为zh-CN</li>
+<li>timezone: 时区，设置为Asia/Shanghai</li>
+<li>url: 你的网站地址，设置为https://新建仓库名 <del>按着我上面的图来就行</del></li>
+</ul>
+<p>拉到最底下</p>
+<p>原先deploy下会少一些，自己加上就好 <del>我忘了少哪个了</del></p>
+<p><img src="https://static01.imgkr.com/temp/2632417ccf8444dbbf4330a27605be21.png" alt="设置根目录_config_2"></p>
+<ul>
+<li>theme: 主题，这个后面设置先不管</li>
+<li>type: 设为git</li>
+<li>repo: 仓库地址，下面介绍</li>
+<li>branch: 上传到仓库的分支，设为master</li>
+</ul>
+<p><img src="https://static01.imgkr.com/temp/97a4935bd85b41749fdf131e64c00636.png" alt="设置推送的仓库"></p>
+<p>把复制到的ssh链接粘贴到repo，注意空格</p>
+<h2 id="6-主题美化"><a href="#6-主题美化" class="headerlink" title="6.主题美化"></a>6.主题美化</h2><h3 id="6-1设置主题"><a href="#6-1设置主题" class="headerlink" title="6.1设置主题"></a>6.1设置主题</h3><p>现在只差最后一步了，选一个你喜欢的主题并下载配置</p>
+<p><strong>这里推荐Litten大佬的yilia主题，简洁大方，访问速度也比较快</strong></p>
+<p><strong>博客根目录下</strong>控制台输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
+
+<p>等待下载完毕之后，就可以把<strong>博客根目录_config.yml</strong>的themes进行设置了，把themes修改为yilia，注意空格</p>
+<p>在最末尾添加</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">jsonContent:</span><br><span class="line">    meta: <span class="literal">false</span></span><br><span class="line">    pages: <span class="literal">false</span></span><br><span class="line">    posts:</span><br><span class="line">      title: <span class="literal">true</span></span><br><span class="line">      date: <span class="literal">true</span></span><br><span class="line">      path: <span class="literal">true</span></span><br><span class="line">      text: <span class="literal">false</span></span><br><span class="line">      raw: <span class="literal">false</span></span><br><span class="line">      content: <span class="literal">false</span></span><br><span class="line">      slug: <span class="literal">false</span></span><br><span class="line">      updated: <span class="literal">false</span></span><br><span class="line">      comments: <span class="literal">false</span></span><br><span class="line">      link: <span class="literal">false</span></span><br><span class="line">      permalink: <span class="literal">false</span></span><br><span class="line">      excerpt: <span class="literal">false</span></span><br><span class="line">      categories: <span class="literal">false</span></span><br><span class="line">      tags: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2主题细节设置"><a href="#6-2主题细节设置" class="headerlink" title="6.2主题细节设置"></a>6.2主题细节设置</h3><p>下面对yilia主题进行调校，觉得这样合适了的可以略过这一步</p>
+<p>进入<strong>yilia主题根目录</strong>，打开_config.yml文件</p>
+<p><del>里面Litten大佬已经差不多写满注释了，我就不那啥了，看着改就行</del></p>
+<h2 id="7-hexo命令"><a href="#7-hexo命令" class="headerlink" title="7.hexo命令"></a>7.hexo命令</h2><h3 id="7-1推送命令"><a href="#7-1推送命令" class="headerlink" title="7.1推送命令"></a>7.1推送命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">hexo c</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hexo s: 本地测试 – 访问localhost:4000</li>
+<li>hexo g: 生成静态页面</li>
+<li>hexo d: 推送至github仓库</li>
+<li>hexo c: 清理之前生成的文件、页面</li>
+</ul>
+<h3 id="7-2写作相关"><a href="#7-2写作相关" class="headerlink" title="7.2写作相关"></a>7.2写作相关</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;标题&quot;</span><br><span class="line">hexo n page &quot;标题&quot;</span><br><span class="line">hexo n draft &quot;标题&quot;</span><br><span class="line">hexo publish &quot;标题&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hexo n: 在博客根目录source/_posts下生成.md文件，也就是你要写的博客文章</li>
+<li>hexo n page: 在博客根目录source下生成文件夹，作为独立页面使用</li>
+<li>hexo n draft: 保存到博客根目录source/_draft文件夹下，作为草稿使用</li>
+<li>hexo publish: 把草稿移动之_posts下</li>
+</ul>
+<p>Q: 怎么删除文章？</p>
+<p>A: 把博客根目录source/_posts下想删除的文章删除即可</p>
+<p><strong>博客根目录下</strong>控制台输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo c</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p><strong>开始你的博客写作吧 <del>可以去看看我的markdown语法介绍</del></strong></p>
+<h2 id="8-一些坑"><a href="#8-一些坑" class="headerlink" title="8.一些坑"></a>8.一些坑</h2><h3 id="8-1hexo-g报错"><a href="#8-1hexo-g报错" class="headerlink" title="8.1hexo g报错"></a>8.1hexo g报错</h3><h4 id="8-1-1需要文件尾…line-x-column-y"><a href="#8-1-1需要文件尾…line-x-column-y" class="headerlink" title="8.1.1需要文件尾…line:x,column:y"></a>8.1.1需要文件尾…line:x,column:y</h4><p>一般是你<strong>不是用hexo n 命令生成的文章</strong>，而是在其他地方写作然后把.md文件移动至_post文件夹下面，这样的<strong>文章开头会缺少一些东西</strong>，把它补上<del>按自己文章的标题和写作时间自行修改即可</del>即可，当然你也可以用hexo n命令新建.md文件，然后把之前写的复制粘贴进去</p>
+<p>缺失如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: markdown</span><br><span class="line">date: <span class="number">2021</span>/<span class="number">7</span>/<span class="number">11</span> <span class="number">22</span>:<span class="number">18</span>:<span class="number">25</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客搭建</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/07/12/githubgitee%20+%20hexo%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-中二少年的摘录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

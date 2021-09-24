@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xuanyinmu.github.io">
-  <title>Archives | APOLLO&#39;s BLOG</title>
+  <title>QT视频学习-1 | APOLLO&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录自己的一些事情">
-<meta property="og:type" content="website">
-<meta property="og:title" content="APOLLO&#39;s BLOG">
-<meta property="og:url" content="https://xuanyinmu.github.io/archives/page/2/index.html">
+  <meta name="description" content="QT视频学习 -11.对象树​    在创建QObject对象时指定父对象，创建的对象会自动加入children()列表，在父对象被析构时，children()列表的对象也会被析构，也就是说加入创建的QObject对象加入对象树后就可以不用手动的delete 2.槽和信号2.1基础的槽和信号1234&#x2F;&#x2F; Qt的槽和信号&#x2F;&#x2F; connect(信号发送者，发送的信号(signal)，信号接收者，信号的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QT视频学习-1">
+<meta property="og:url" content="https://xuanyinmu.github.io/2021/09/24/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-1/index.html">
 <meta property="og:site_name" content="APOLLO&#39;s BLOG">
-<meta property="og:description" content="记录自己的一些事情">
+<meta property="og:description" content="QT视频学习 -11.对象树​    在创建QObject对象时指定父对象，创建的对象会自动加入children()列表，在父对象被析构时，children()列表的对象也会被析构，也就是说加入创建的QObject对象加入对象树后就可以不用手动的delete 2.槽和信号2.1基础的槽和信号1234&#x2F;&#x2F; Qt的槽和信号&#x2F;&#x2F; connect(信号发送者，发送的信号(signal)，信号接收者，信号的">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-24T15:33:05.000Z">
+<meta property="article:modified_time" content="2021-09-24T15:33:58.054Z">
 <meta property="article:author" content="apollo">
+<meta property="article:tag" content="Qt">
 <meta name="twitter:card" content="summary">
   
   
@@ -134,139 +137,132 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-QT视频学习-1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      QT视频学习-1
+    </h1>
+  
+
+        
+        <a href="/2021/09/24/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-1/" class="archive-article-date">
+  	<time datetime="2021-09-24T15:33:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-24</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="QT视频学习-1"><a href="#QT视频学习-1" class="headerlink" title="QT视频学习 -1"></a>QT视频学习 -1</h1><h2 id="1-对象树"><a href="#1-对象树" class="headerlink" title="1.对象树"></a>1.对象树</h2><p>​    在创建QObject对象时指定父对象，创建的对象会自动加入children()列表，在父对象被析构时，children()列表的对象也会被析构，也就是说加入创建的<strong>QObject对象加入对象树</strong>后就可以<strong>不用手动的delete</strong></p>
+<h2 id="2-槽和信号"><a href="#2-槽和信号" class="headerlink" title="2.槽和信号"></a>2.槽和信号</h2><h3 id="2-1基础的槽和信号"><a href="#2-1基础的槽和信号" class="headerlink" title="2.1基础的槽和信号"></a>2.1基础的槽和信号</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Qt的槽和信号</span></span><br><span class="line"><span class="comment">// connect(信号发送者，发送的信号(signal)，信号接收者，信号的处理(slot));</span></span><br><span class="line"><span class="comment">// 如下实现点击按钮关闭窗口</span></span><br><span class="line"><span class="built_in">connect</span>(btn,&amp;QPushButton::clicked,<span class="keyword">this</span>,&amp;Widget::close);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2自定义槽和信号"><a href="#2-2自定义槽和信号" class="headerlink" title="2.2自定义槽和信号"></a>2.2自定义槽和信号</h3><h4 id="2-2-1信号"><a href="#2-2-1信号" class="headerlink" title="2.2.1信号"></a>2.2.1信号</h4><ol>
+<li>自定义信号写到signal下面，方便兼容之前的版本；</li>
+<li>自定义信号返回值为void，只需要声明，无需实现</li>
+<li>可以有参数，可以重载</li>
+</ol>
+<h4 id="2-2-2槽"><a href="#2-2-2槽" class="headerlink" title="2.2.2槽"></a>2.2.2槽</h4><ol>
+<li>自定义槽写到public slot下，方便兼容之前的版本</li>
+<li>返回值为void，需要声明，也要在对应的.cpp中实现</li>
+<li>可以有参数，可以重载</li>
+</ol>
+<h4 id="2-2-3触发自定义信号"><a href="#2-2-3触发自定义信号" class="headerlink" title="2.2.3触发自定义信号"></a>2.2.3触发自定义信号</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// emit 自定义信号 </span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-4重载问题的解决-函数指针"><a href="#2-2-4重载问题的解决-函数指针" class="headerlink" title="2.2.4重载问题的解决 - 函数指针"></a>2.2.4重载问题的解决 - 函数指针</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数返回类型 (类名::*指针名)(参数类型1,参数类型2,...) = &amp;类名::所需要的重载函数名</span></span><br><span class="line"><span class="comment">// 如下示例</span></span><br><span class="line"><span class="comment">// Teacher类有hungry()重载函数，Student类有treat()重载函数</span></span><br><span class="line"><span class="comment">// zt为Teacher类实例化对象指针，st为Student类实例化对象指针</span></span><br><span class="line"><span class="built_in"><span class="keyword">void</span></span> (Teacher:: *teacherSignal)(QString) = &amp;Teacher::<span class="built_in">hungry</span>();</span><br><span class="line"><span class="built_in"><span class="keyword">void</span></span> (Student:: *studentSlot)(QString) = &amp;Student::<span class="built_in">treat</span>();</span><br><span class="line"><span class="built_in">connect</span>(zt,teacherSignal,st,studentSlot);</span><br></pre></td></tr></table></figure>
+
+<p>扩展：</p>
+<p>QString转为char <em>，先用</em>*.toUtf-8()<strong>转成QByteArray再用</strong>.data**转为char *，用来去除字符串的引号</p>
+<h4 id="2-2-5信号与信号链接"><a href="#2-2-5信号与信号链接" class="headerlink" title="2.2.5信号与信号链接"></a>2.2.5信号与信号链接</h4><p>信号可以与信号链接</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以通过信号1链接信号2，再链接信号2和槽函数1，可以通过信号1触发槽函数1</span></span><br><span class="line"><span class="built_in">connect</span>(信号发送者<span class="number">1</span>，信号<span class="number">1</span>，信号发送者<span class="number">2</span>，信号<span class="number">2</span>);</span><br><span class="line"><span class="built_in">connect</span>(信号发送者<span class="number">2</span>，信号<span class="number">2</span>，信号接收者<span class="number">1</span>，槽函数<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>disconnect</strong>可以断开信号和槽的链接</p>
+<p>扩展：</p>
+<ol>
+<li>一个信号可以链接多个槽函数</li>
+<li>多个信号可以链接同一个槽函数</li>
+<li>信号和槽函数<strong>参数类型</strong>必须一一<strong>对应</strong></li>
+<li><strong>信号参数</strong>个数<strong>可以多余槽函数</strong>参数个数</li>
+</ol>
+<h3 id="3-Lambda表达式"><a href="#3-Lambda表达式" class="headerlink" title="3.Lambda表达式"></a>3.Lambda表达式</h3><p>lambda表达式用于创建匿名对象</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 格式如下</span></span><br><span class="line"><span class="comment">// []标识符</span></span><br><span class="line"><span class="comment">// ()参数</span></span><br><span class="line"><span class="comment">// &#123;&#125;函数体（实现体）</span></span><br><span class="line">[]()&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最常用</span></span><br><span class="line"><span class="comment">// [=]()&#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// mutable	可以修改传递进来的对象的值的拷贝，但是不能修改传进来的对象的值的本身</span></span><br><span class="line">[]()<span class="keyword">mutable</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// -&gt; 指定函数返回值的类型</span></span><br><span class="line">[]()-&gt;type&#123;&#125; <span class="comment">// type为返回类型</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>[]参数:</p>
+<ul>
+<li>=    值传递，可以使用所在类的所有变量等等</li>
+<li>&amp;    引用传递，一般不用</li>
+<li>a     只可以使用这个a变量</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/07/12/githubgitee%20+%20hexo%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-07-11T17:00:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/12/githubgitee%20+%20hexo%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">个人博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客搭建</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/07/11/%E4%B8%AD%E4%BA%8C%E5%B0%91%E5%B9%B4%E7%9A%84%E6%91%98%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2021-07-11T14:18:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/09/10/JS%E5%AD%A6%E4%B9%A0-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS学习-1</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/11/%E4%B8%AD%E4%BA%8C%E5%B0%91%E5%B9%B4%E7%9A%84%E6%91%98%E5%BD%95/">摘录</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">摘录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/07/11/markdown%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2021-07-11T14:18:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/11/markdown%E8%AF%AD%E6%B3%95/">markdown</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -290,8 +286,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
