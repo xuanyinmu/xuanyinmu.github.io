@@ -136,6 +136,197 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-QT视频学习-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/19/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-3/">QT视频学习-3</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/19/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-3/" class="archive-article-date">
+  	<time datetime="2021-10-19T07:01:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="QT视频学习-3"><a href="#QT视频学习-3" class="headerlink" title="QT视频学习-3"></a>QT视频学习-3</h1><h2 id="1-对话框"><a href="#1-对话框" class="headerlink" title="1.对话框"></a>1.对话框</h2><h3 id="1-1模态对话框"><a href="#1-1模态对话框" class="headerlink" title="1.1模态对话框"></a>1.1模态对话框</h3><p>​    所谓的模态对话框就是在对话框弹出后，<strong>不可</strong>再对其他的窗口进行<strong>操作</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建对话框</span></span><br><span class="line"><span class="function">QDialog <span class="title">dlog</span><span class="params">(<span class="keyword">this</span>)</span></span>;</span><br><span class="line"><span class="comment">// 模态展示</span></span><br><span class="line">dlog.<span class="built_in">exec</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2非模态对话框"><a href="#1-2非模态对话框" class="headerlink" title="1.2非模态对话框"></a>1.2非模态对话框</h3><p>​    在对话框弹出后，<strong>可</strong>再对其他的窗口进行<strong>操作</strong></p>
+<p>​    非模态时退出<strong>应该在退出时删除</strong>这个窗口，不然多次创建之后可能内存会爆</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在connect中创建时，不可在栈上创建，需要在堆上创建，不然会一闪而过</span></span><br><span class="line">QDialog *dlog = <span class="keyword">new</span> <span class="built_in">QDialog</span>(<span class="keyword">this</span>);</span><br><span class="line"><span class="comment">// 非模态展示</span></span><br><span class="line">dlog-&gt;<span class="built_in">show</span>();</span><br><span class="line"><span class="comment">// 关闭窗口时删除此窗口</span></span><br><span class="line">dlog-&gt;<span class="built_in">setAttribute</span>(Qt::WA_DeleteOnClose);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-标准对话框"><a href="#2-标准对话框" class="headerlink" title="2.标准对话框"></a>2.标准对话框</h2><h3 id="2-1消息对话框"><a href="#2-1消息对话框" class="headerlink" title="2.1消息对话框"></a>2.1消息对话框</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QMessageBox::<span class="built_in">information</span>(<span class="keyword">this</span>,<span class="string">&quot;对话框名&quot;</span>,<span class="string">&quot;信息&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2错误对话框"><a href="#2-2错误对话框" class="headerlink" title="2.2错误对话框"></a>2.2错误对话框</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QMessageBox::<span class="built_in">critical</span>(<span class="keyword">this</span>,<span class="string">&quot;对话框名&quot;</span>,<span class="string">&quot;错误信息&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3问题对话框"><a href="#2-3问题对话框" class="headerlink" title="2.3问题对话框"></a>2.3问题对话框</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数</span></span><br><span class="line"><span class="comment">// 父类 对话框名 提问信息 按钮类型 默认回车按钮位置 </span></span><br><span class="line"><span class="comment">// 返回的是StandardButton -- 可以利用返回值判断选择的按钮</span></span><br><span class="line">QMessageBox::<span class="built_in">question</span>(<span class="keyword">this</span>,<span class="string">&quot;对话框名&quot;</span>,<span class="string">&quot;提问信息&quot;</span>,QMessageBox::Save|QMessageBox::Cancel,QMessageBox::Cancel);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4警告对话框"><a href="#2-4警告对话框" class="headerlink" title="2.4警告对话框"></a>2.4警告对话框</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QMessageBox::<span class="built_in">warning</span>(<span class="keyword">this</span>,<span class="string">&quot;对话框名&quot;</span>,<span class="string">&quot;警告信息&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5颜色对话框"><a href="#2-5颜色对话框" class="headerlink" title="2.5颜色对话框"></a>2.5颜色对话框</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QColor color = QColorDialog::<span class="built_in">getColor</span>(<span class="built_in">QColor</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6文件对话框"><a href="#2-6文件对话框" class="headerlink" title="2.6文件对话框"></a>2.6文件对话框</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数</span></span><br><span class="line"><span class="comment">// 父类 对话框名 文件路径 过滤文件类型</span></span><br><span class="line"><span class="comment">// 返回值是文件路径</span></span><br><span class="line">QString path = QFileDialog::<span class="built_in">getOPenFileName</span>(<span class="keyword">this</span>,<span class="string">&quot;打开文件&quot;</span>,<span class="string">&quot;c::\\1.txt&quot;</span>,<span class="string">&quot;(*.txt)&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7字体对话框"><a href="#2-7字体对话框" class="headerlink" title="2.7字体对话框"></a>2.7字体对话框</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> flag;</span><br><span class="line"><span class="comment">// 参数 布尔指针 QFont</span></span><br><span class="line">QFont font = QFontDialog::<span class="built_in">getFont</span>(&amp;flag,<span class="built_in">QFont</span>(<span class="string">&quot;宋体&quot;</span>,<span class="number">22</span>));</span><br><span class="line"><span class="comment">// family() - 字体 去掉&quot;&quot; -- toUtf8().data()</span></span><br><span class="line"><span class="comment">// pointSize() - 字体大小</span></span><br><span class="line"><span class="comment">// bold() - 是否加粗</span></span><br><span class="line"><span class="comment">// italic() - 斜体</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-资源文件"><a href="#2-资源文件" class="headerlink" title="2.资源文件"></a>2.资源文件</h2><ol>
+<li> 将图片文件夹拷贝至项目文件下</li>
+<li>项目-&gt;添加新文件-&gt;Qt-&gt;Qt recourse File-&gt;起名</li>
+<li>open in editor</li>
+<li>添加前缀 -&gt; 添加所需文件</li>
+<li>使用：“:+前缀名+文件名” (实际没有‘+’)</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/19/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-QT视频学习-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/19/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-2/">QT视频学习-2</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/19/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-2/" class="archive-article-date">
+  	<time datetime="2021-10-19T06:12:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="QT视频学习-2"><a href="#QT视频学习-2" class="headerlink" title="QT视频学习 - 2"></a>QT视频学习 - 2</h1><h2 id="1-QMainWindow"><a href="#1-QMainWindow" class="headerlink" title="1.QMainWindow"></a>1.QMainWindow</h2><h3 id="1-1菜单栏"><a href="#1-1菜单栏" class="headerlink" title="1.1菜单栏"></a>1.1菜单栏</h3><p>​    菜单栏<strong>最多有一个</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建菜单栏</span></span><br><span class="line">QMenuBar *bar = <span class="built_in">MenuBar</span>();</span><br><span class="line"><span class="comment">// 加入窗口</span></span><br><span class="line"><span class="built_in">setMenuBar</span>(bar);</span><br><span class="line"><span class="comment">// 创建菜单</span></span><br><span class="line">QMenu *fileMenu = bar-&gt;<span class="built_in">addMenu</span>(<span class="string">&quot;文件&quot;</span>);</span><br><span class="line"><span class="comment">// 添加菜单项</span></span><br><span class="line">QAction *newAction = fileMenu-&gt;<span class="built_in">addMenu</span>(<span class="string">&quot;新建&quot;</span>);</span><br><span class="line"><span class="comment">// 添加分割线 -- 可选，这里仅为展示</span></span><br><span class="line">fileMenu-&gt;<span class="built_in">addSeparator</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2工具栏"><a href="#1-2工具栏" class="headerlink" title="1.2工具栏"></a>1.2工具栏</h3><p>​    工具栏<strong>可以有多个</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建工具栏</span></span><br><span class="line">QToolBar *toolBar = <span class="keyword">new</span> <span class="built_in">QToolBar</span>(<span class="keyword">this</span>);</span><br><span class="line"><span class="comment">// 加入窗口 -- 第一个参数为初始位置</span></span><br><span class="line"><span class="built_in">addToolBar</span>(Qt::LeftToolBarArea,toolBar);</span><br><span class="line"><span class="comment">// 后期设置 -- 允许停靠位置</span></span><br><span class="line">toolBar-&gt;<span class="built_in">setAllowedAreas</span>(Qt::LeftToolBarArea|Qt::RightToolBarArea);</span><br><span class="line"><span class="comment">// 浮动</span></span><br><span class="line">toolBar-&gt;<span class="built_in">setFloatable</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="comment">// 移动 -- 总设置(或者说这个工具栏的全局设置)</span></span><br><span class="line">toolBar-&gt;<span class="built_in">setMoveable</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="comment">// 添加菜单项</span></span><br><span class="line"><span class="comment">// 可以添加小控件 用addWidget()</span></span><br><span class="line">toolBar-&gt;<span class="built_in">addAction</span>(newAction);</span><br><span class="line">toolBar-&gt;<span class="built_in">addSeparator</span>();</span><br><span class="line">QPushButton *btn = <span class="keyword">new</span> <span class="built_in">QPushButton</span>(<span class="string">&quot;addToToolBar&quot;</span>,<span class="keyword">this</span>);</span><br><span class="line">toolBar-&gt;<span class="built_in">addWidget</span>(btn);</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3状态栏"><a href="#1-3状态栏" class="headerlink" title="1.3状态栏"></a>1.3状态栏</h3><p>​    状态栏也<strong>只有一个</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建状态栏</span></span><br><span class="line">QStatusBar *stBar = <span class="built_in">statusBar</span>();</span><br><span class="line"><span class="comment">// 加入窗口</span></span><br><span class="line"><span class="built_in">setStatusBar</span>(stBar);</span><br><span class="line"><span class="comment">// 状态栏标签</span></span><br><span class="line">stBar-&gt;<span class="built_in">addWidget</span>(<span class="keyword">new</span> <span class="built_in">QLabel</span>(<span class="string">&quot;左侧状态&quot;</span>));</span><br><span class="line">stBar-&gt;<span class="built_in">adPermanentdWidget</span>(<span class="keyword">new</span> <span class="built_in">QLabel</span>(<span class="string">&quot;右侧状态&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4铆接部件-浮动窗口"><a href="#1-4铆接部件-浮动窗口" class="headerlink" title="1.4铆接部件 - 浮动窗口"></a>1.4铆接部件 - 浮动窗口</h3><p>​    浮动窗口<strong>可以有多个</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建浮动窗口 - 第一个参数为窗口名</span></span><br><span class="line">QDockWidget *dockWidet = <span class="keyword">new</span> <span class="built_in">QDockWidget</span>(<span class="string">&quot;窗口名&quot;</span>,<span class="keyword">this</span>);</span><br><span class="line"><span class="comment">// 加入窗口 - 第一个参数为默认位置</span></span><br><span class="line"><span class="built_in">addDockWidget</span>(Qt::BottomDockWidgetArea,dockWidget);</span><br><span class="line"><span class="comment">// 设置后期停靠 - 只允许上下</span></span><br><span class="line">dockWidget-&gt;<span class="built_in">setAllowedAreas</span>(Qt::BottomDockWidgetArea|Qt::TopDockWidgetArea);</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5中心部件"><a href="#1-5中心部件" class="headerlink" title="1.5中心部件"></a>1.5中心部件</h3><p>​    中心部件<strong>只有一个</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里以QTextEdit</span></span><br><span class="line">QTextEdit *edit = <span class="keyword">new</span> <span class="built_in">QTextEdit</span>(<span class="keyword">this</span>);</span><br><span class="line"><span class="built_in">setCentralWidget</span>(edit);</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/19/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-QT视频学习-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1075,186 +1266,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/09/02/HTML%E8%AF%AD%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-web标准" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/02/web%E6%A0%87%E5%87%86/">web标准</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/02/web%E6%A0%87%E5%87%86/" class="archive-article-date">
-  	<time datetime="2021-09-02T14:16:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Web标准"><a href="#Web标准" class="headerlink" title="Web标准"></a>Web标准</h1><h2 id="1-Web标准构成"><a href="#1-Web标准构成" class="headerlink" title="1.Web标准构成"></a>1.Web标准构成</h2><ul>
-<li>结构：对<strong>网页元素</strong>进行整理和分类</li>
-<li>表现：设置网页元素的版式、颜色、大小等<strong>外观样式</strong></li>
-<li>行为：网页模型的定义和<strong>交互</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="center">标准</th>
-<th align="center">对应</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">结构</td>
-<td align="center">HTML</td>
-</tr>
-<tr>
-<td align="center">表现</td>
-<td align="center">CSS</td>
-</tr>
-<tr>
-<td align="center">行为</td>
-<td align="center">Javascript</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/02/web%E6%A0%87%E5%87%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-网站网页相关概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/02/%E7%BD%91%E7%AB%99%E7%BD%91%E9%A1%B5%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">网站网页相关概念</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/02/%E7%BD%91%E7%AB%99%E7%BD%91%E9%A1%B5%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/" class="archive-article-date">
-  	<time datetime="2021-09-02T13:55:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="网站网页的相关概念"><a href="#网站网页的相关概念" class="headerlink" title="网站网页的相关概念"></a>网站网页的相关概念</h1><h2 id="1-网站"><a href="#1-网站" class="headerlink" title="1.网站"></a>1.网站</h2><h3 id="1-1网站定义"><a href="#1-1网站定义" class="headerlink" title="1.1网站定义"></a>1.1网站定义</h3><p>网站是<strong>网页的集合</strong></p>
-<h2 id="2-网页"><a href="#2-网页" class="headerlink" title="2.网页"></a>2.网页</h2><h3 id="2-1网页定义"><a href="#2-1网页定义" class="headerlink" title="2.1网页定义"></a>2.1网页定义</h3><p>实际上就是一个html文件，里面包含html代码</p>
-<p>通常为以**.html<strong>或者</strong>.htm**为后缀的文件</p>
-<h3 id="2-2HTML含义"><a href="#2-2HTML含义" class="headerlink" title="2.2HTML含义"></a>2.2HTML含义</h3><p>HTML，<strong>超文本标记语言</strong></p>
-<p>所谓的超文本就是</p>
-<ol>
-<li>可以加入、声音、动画、多媒体等，<strong>超越了文本的限制</strong></li>
-<li>可以从一个文件跳转到另一个文件，<strong>超级链接文本</strong></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/02/%E7%BD%91%E7%AB%99%E7%BD%91%E9%A1%B5%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">展开全文 >></a>
         </p>
       
 
