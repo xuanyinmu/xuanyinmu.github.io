@@ -136,6 +136,238 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-VTK学习-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-2/">VTK学习-2</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-2/" class="archive-article-date">
+  	<time datetime="2021-09-02T15:02:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="VTK学习-2"><a href="#VTK学习-2" class="headerlink" title="VTK学习-2"></a>VTK学习-2</h1><h2 id="1-pipeline简介"><a href="#1-pipeline简介" class="headerlink" title="1.pipeline简介"></a>1.pipeline简介</h2><p><strong>VTK的pipeline主要用于读取和创造数据，一般是为Render Engine做准备工作</strong></p>
+<p><strong>采用数据流的方法将数据信息转换为图形数据，主要涉及两个类：vtkDataObject、vtkAlgorithm</strong></p>
+<h2 id="2-vtkDataObject、vtkAlgorithm"><a href="#2-vtkDataObject、vtkAlgorithm" class="headerlink" title="2.vtkDataObject、vtkAlgorithm"></a>2.vtkDataObject、vtkAlgorithm</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">VTK</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-VTK学习-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-1/">VTK学习-1</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-1/" class="archive-article-date">
+  	<time datetime="2021-09-02T15:01:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="VTK学习-1"><a href="#VTK学习-1" class="headerlink" title="VTK学习-1"></a>VTK学习-1</h1><p><strong>教程为csdn沈子恒VTK修炼之道</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// VTK可视化流程</span></span><br><span class="line"><span class="built_in">VTK</span>()</span><br><span class="line">&#123;</span><br><span class="line">    create a window;</span><br><span class="line">    create a renderer; <span class="comment">// 把renderer加入window</span></span><br><span class="line">    </span><br><span class="line">    create procedural geometry;</span><br><span class="line">    create a mapper; <span class="comment">// 把geometry加入mapper</span></span><br><span class="line">    create an actor; <span class="comment">// 把mapper加入actor</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 把actor加入renderer</span></span><br><span class="line">    window-&gt;<span class="built_in">render</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="1-类的继承"><a href="#1-类的继承" class="headerlink" title="1.类的继承"></a>1.类的继承</h2><h3 id="1-1几乎所有对象都源于超类vtkObject"><a href="#1-1几乎所有对象都源于超类vtkObject" class="headerlink" title="1.1几乎所有对象都源于超类vtkObject"></a>1.1几乎所有对象都源于超类vtkObject</h3><h3 id="1-2一些特定情况源于vtkObjectBase"><a href="#1-2一些特定情况源于vtkObjectBase" class="headerlink" title="1.2一些特定情况源于vtkObjectBase"></a>1.2一些特定情况源于vtkObjectBase</h3><h3 id="1-3构造函数采用保护类型"><a href="#1-3构造函数采用保护类型" class="headerlink" title="1.3构造函数采用保护类型"></a>1.3构造函数采用保护类型</h3><h2 id="2-创建对象"><a href="#2-创建对象" class="headerlink" title="2.创建对象"></a>2.创建对象</h2><h3 id="2-1可以采用智能指针防止内存泄漏"><a href="#2-1可以采用智能指针防止内存泄漏" class="headerlink" title="2.1可以采用智能指针防止内存泄漏"></a>2.1可以采用智能指针防止内存泄漏</h3><h2 id="3-运行类型信息"><a href="#3-运行类型信息" class="headerlink" title="3.运行类型信息"></a>3.运行类型信息</h2><h3 id="3-1GetClassName-得到VTK对象类型"><a href="#3-1GetClassName-得到VTK对象类型" class="headerlink" title="3.1GetClassName()得到VTK对象类型"></a>3.1GetClassName()得到VTK对象类型</h3><h3 id="3-2IsA-“vtkExampleClass”-判断是否是某个类的对象"><a href="#3-2IsA-“vtkExampleClass”-判断是否是某个类的对象" class="headerlink" title="3.2IsA(“vtkExampleClass”)判断是否是某个类的对象"></a>3.2IsA(“vtkExampleClass”)判断是否是某个类的对象</h3><h3 id="3-3Print-了解对象当前描述"><a href="#3-3Print-了解对象当前描述" class="headerlink" title="3.3Print()了解对象当前描述"></a>3.3Print()了解对象当前描述</h3><h2 id="4-渲染引擎"><a href="#4-渲染引擎" class="headerlink" title="4.渲染引擎"></a>4.渲染引擎</h2><h3 id="4-1vtkProp视图位置、尺寸、方向"><a href="#4-1vtkProp视图位置、尺寸、方向" class="headerlink" title="4.1vtkProp视图位置、尺寸、方向"></a>4.1vtkProp视图位置、尺寸、方向</h3><h3 id="4-2vtkProperty、vtkVolumeProp属性、体积属性"><a href="#4-2vtkProperty、vtkVolumeProp属性、体积属性" class="headerlink" title="4.2vtkProperty、vtkVolumeProp属性、体积属性"></a>4.2vtkProperty、vtkVolumeProp属性、体积属性</h3><p><strong>颜色、透明度、阴影、反射</strong></p>
+<h3 id="4-3vtkCamera"><a href="#4-3vtkCamera" class="headerlink" title="4.3vtkCamera"></a>4.3vtkCamera</h3><h3 id="4-4vtkRender-渲染器"><a href="#4-4vtkRender-渲染器" class="headerlink" title="4.4vtkRender 渲染器"></a>4.4vtkRender 渲染器</h3><p><strong>渲染器将道具、摄像机、灯光组成场景</strong></p>
+<p><strong>一个舞台可以构建多个渲染器对象，即多视窗</strong></p>
+<h3 id="4-5vtkRenderWindowInterrater-交互"><a href="#4-5vtkRenderWindowInterrater-交互" class="headerlink" title="4.5vtkRenderWindowInterrater 交互"></a>4.5vtkRenderWindowInterrater 交互</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">VTK</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-VSCode插件辅助" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/02/VSCode%E6%8F%92%E4%BB%B6%E8%BE%85%E5%8A%A9/">VSCode插件辅助</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/02/VSCode%E6%8F%92%E4%BB%B6%E8%BE%85%E5%8A%A9/" class="archive-article-date">
+  	<time datetime="2021-09-02T14:54:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="VSCode插件"><a href="#VSCode插件" class="headerlink" title="VSCode插件"></a>VSCode插件</h1><h2 id="1-Chinese-中文汉化包"><a href="#1-Chinese-中文汉化包" class="headerlink" title="1.Chinese-中文汉化包"></a>1.Chinese-中文汉化包</h2><p>汉化</p>
+<h2 id="2-Open-in-Browser"><a href="#2-Open-in-Browser" class="headerlink" title="2.Open in Browser"></a>2.Open in Browser</h2><p>可以直接选择浏览器进行展示</p>
+<h2 id="3-Auto-Rename-Tag"><a href="#3-Auto-Rename-Tag" class="headerlink" title="3.Auto Rename Tag"></a>3.Auto Rename Tag</h2><p>自动对双标签的尾标签进行重命名</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/02/VSCode%E6%8F%92%E4%BB%B6%E8%BE%85%E5%8A%A9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-HTML语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

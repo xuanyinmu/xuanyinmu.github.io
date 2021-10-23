@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xuanyinmu.github.io">
-  <title>QT视频学习-4 | APOLLO&#39;s BLOG</title>
+  <title>QT视频学习-5 | APOLLO&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="QT视频学习-41. 登录窗口布局1.1 布局类型 水平布局 垂直布局 栅格布局 - 推荐有网状结构时使用  1.2 其他 可以用一个widget来包住控件，然后对widget进行布局 默认窗口和控件之间有间隙，可以调整layoutLeftMargin、layoutRightMargin、layoutTopMargin、layoutBottomMargin QWidget有sizePolicy的垂">
+  <meta name="description" content="QT视频学习-51. 鼠标事件1.1 鼠标进入​    重写enterEvent()函数，在.h中声明，.cpp中实现 1void enterEvent(QEvent *event);  1.2 鼠标离开​    重写leaveEvent()函数，在.h中声明，.cpp中实现 12&#x2F;&#x2F; .h中声明void leaveEvent(QEvent *);  1.3 鼠标按下​    虚函数，需要实现 1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="QT视频学习-4">
-<meta property="og:url" content="https://xuanyinmu.github.io/2021/10/20/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-4/index.html">
+<meta property="og:title" content="QT视频学习-5">
+<meta property="og:url" content="https://xuanyinmu.github.io/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-5/index.html">
 <meta property="og:site_name" content="APOLLO&#39;s BLOG">
-<meta property="og:description" content="QT视频学习-41. 登录窗口布局1.1 布局类型 水平布局 垂直布局 栅格布局 - 推荐有网状结构时使用  1.2 其他 可以用一个widget来包住控件，然后对widget进行布局 默认窗口和控件之间有间隙，可以调整layoutLeftMargin、layoutRightMargin、layoutTopMargin、layoutBottomMargin QWidget有sizePolicy的垂">
+<meta property="og:description" content="QT视频学习-51. 鼠标事件1.1 鼠标进入​    重写enterEvent()函数，在.h中声明，.cpp中实现 1void enterEvent(QEvent *event);  1.2 鼠标离开​    重写leaveEvent()函数，在.h中声明，.cpp中实现 12&#x2F;&#x2F; .h中声明void leaveEvent(QEvent *);  1.3 鼠标按下​    虚函数，需要实现 1">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-20T06:58:15.000Z">
-<meta property="article:modified_time" content="2021-10-20T09:16:06.899Z">
+<meta property="article:published_time" content="2021-10-23T08:48:54.000Z">
+<meta property="article:modified_time" content="2021-10-23T09:57:12.137Z">
 <meta property="article:author" content="apollo">
 <meta property="article:tag" content="Qt">
 <meta name="twitter:card" content="summary">
@@ -137,122 +137,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-QT视频学习-4" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-QT视频学习-5" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      QT视频学习-4
+      QT视频学习-5
     </h1>
   
 
         
-        <a href="/2021/10/20/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-4/" class="archive-article-date">
-  	<time datetime="2021-10-20T06:58:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-20</time>
+        <a href="/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-5/" class="archive-article-date">
+  	<time datetime="2021-10-23T08:48:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="QT视频学习-4"><a href="#QT视频学习-4" class="headerlink" title="QT视频学习-4"></a>QT视频学习-4</h1><h2 id="1-登录窗口布局"><a href="#1-登录窗口布局" class="headerlink" title="1. 登录窗口布局"></a>1. 登录窗口布局</h2><h3 id="1-1-布局类型"><a href="#1-1-布局类型" class="headerlink" title="1.1 布局类型"></a>1.1 布局类型</h3><ol>
-<li>水平布局</li>
-<li>垂直布局</li>
-<li>栅格布局 - 推荐有网状结构时使用</li>
-</ol>
-<h3 id="1-2-其他"><a href="#1-2-其他" class="headerlink" title="1.2 其他"></a>1.2 其他</h3><ul>
-<li>可以用一个widget来包住控件，然后对widget进行布局</li>
-<li>默认窗口和控件之间有间隙，可以调整layoutLeftMargin、layoutRightMargin、layoutTopMargin、layoutBottomMargin</li>
-<li>QWidget有sizePolicy的垂直策略可以调整widget的高度 - 改为Fixed即可</li>
-<li>QLineEdit可以选择echoMode来选择<strong>显示模式</strong> - password可以以圆点显示text</li>
-</ul>
-<h2 id="2-按钮控件组"><a href="#2-按钮控件组" class="headerlink" title="2. 按钮控件组"></a>2. 按钮控件组</h2><h3 id="2-1-QPushButton"><a href="#2-1-QPushButton" class="headerlink" title="2.1 QPushButton"></a>2.1 QPushButton</h3><p>​    常用按钮</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
+        <h1 id="QT视频学习-5"><a href="#QT视频学习-5" class="headerlink" title="QT视频学习-5"></a>QT视频学习-5</h1><h2 id="1-鼠标事件"><a href="#1-鼠标事件" class="headerlink" title="1. 鼠标事件"></a>1. 鼠标事件</h2><h3 id="1-1-鼠标进入"><a href="#1-1-鼠标进入" class="headerlink" title="1.1 鼠标进入"></a>1.1 鼠标进入</h3><p>​    重写enterEvent()函数，在.h中声明，.cpp中实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">enterEvent</span><span class="params">(QEvent *event)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-2-QToolButton"><a href="#2-2-QToolButton" class="headerlink" title="2.2 QToolButton"></a>2.2 QToolButton</h3><p>​    工具按钮，用于显示图片；如果想显示文字，修改风格toolButtonStyle</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-2-鼠标离开"><a href="#1-2-鼠标离开" class="headerlink" title="1.2 鼠标离开"></a>1.2 鼠标离开</h3><p>​    重写leaveEvent()函数，在.h中声明，.cpp中实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h中声明</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leaveEvent</span><span class="params">(QEvent *)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-3-QRadioButton"><a href="#2-3-QRadioButton" class="headerlink" title="2.3 QRadioButton"></a>2.3 QRadioButton</h3><p>​    可以用GroupBox来对两个按钮进行组合，组合后才可以对多个单选按钮组进行多个选择</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置默认选中</span></span><br><span class="line">ui-&gt;btn-&gt;<span class="built_in">setChecked</span>(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-鼠标按下"><a href="#1-3-鼠标按下" class="headerlink" title="1.3 鼠标按下"></a>1.3 鼠标按下</h3><p>​    虚函数，需要实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h中声明</span></span><br><span class="line"><span class="comment">// virtual 可以不写</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mousePressEvent</span><span class="params">(QMouseEvent *ev)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// .cpp中实现 -- 此处用QLabel</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QLabel::mousePressEvent</span><span class="params">(QMouseEvent *ev)</span></span>&#123;</span><br><span class="line">    <span class="comment">// ev中有各种信息 如相对位置x(),y() 全局位置globalX(),globalY()</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 判断是否是左键按下 -- 释放与此相同</span></span><br><span class="line">    <span class="keyword">if</span>(ev-&gt;<span class="built_in">button</span>() == Qt::LeftButton)</span><br><span class="line">    &#123;</span><br><span class="line">        QString str = <span class="built_in">QString</span>(<span class="string">&quot;鼠标按下，x=%1，y=2%&quot;</span>).<span class="built_in">arg</span>(ev-&gt;<span class="built_in">x</span>()).<span class="built_in">arg</span>(ev-&gt;<span class="built_in">y</span>());</span><br><span class="line">    	<span class="built_in">qDebug</span>()&lt;&lt;str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-4-QCheckBox"><a href="#2-4-QCheckBox" class="headerlink" title="2.4 QCheckBox"></a>2.4 QCheckBox</h3><p>​    多选按钮</p>
-<p>​    监听状态：2 - 选中，1 - 半选，0 - 未选中</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 状态改变信号 QCheckBox::stateChanged</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-4-鼠标释放"><a href="#1-4-鼠标释放" class="headerlink" title="1.4 鼠标释放"></a>1.4 鼠标释放</h3><p>​    虚函数，需要实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h中声明</span></span><br><span class="line"><span class="comment">// virtual 可以不写</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mouseReleaseEvent</span><span class="params">(QMouseEvent *ev)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-QListWidget"><a href="#3-QListWidget" class="headerlink" title="3. QListWidget"></a>3. QListWidget</h2><p>步骤：</p>
-<ol>
-<li>创建QListWidgetItem</li>
-<li>加入QListWidget</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加一行</span></span><br><span class="line">QListWidgetItem *item = <span class="keyword">new</span> <span class="built_in">QListWidgetItem</span>(<span class="string">&quot;要显示的内容&quot;</span>);</span><br><span class="line"><span class="comment">// 将item加入到QListWidget中去</span></span><br><span class="line">ui-&gt;listWidget-&gt;<span class="built_in">addItem</span>(item);</span><br><span class="line"><span class="comment">// 设置居中格式 -- 这里设置水平居中</span></span><br><span class="line">item-&gt;<span class="built_in">setTextAlignment</span>(Qt::AlignHCenter);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 依次加入多行 - QStringList == QList&lt;QString&gt;</span></span><br><span class="line"><span class="comment">// 没有办法设置居中</span></span><br><span class="line">QStringList list;</span><br><span class="line">list&lt;&lt;&quot;第一行内容&quot;&lt;&lt;&quot;第二行内容&quot;&lt;&lt;&quot;第三行内容&quot;&lt;&lt;&quot;第四行内容&quot;;</span><br><span class="line">ui-&gt;listWidget-&gt;<span class="built_in">addItems</span>(list);</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-鼠标移动"><a href="#1-5-鼠标移动" class="headerlink" title="1.5 鼠标移动"></a>1.5 鼠标移动</h3><p>​    虚函数，需要实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h中声明</span></span><br><span class="line"><span class="comment">// virtual 可以不写</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mouseMoveEvent</span><span class="params">(QMouseEvent *ev)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// .cpp中实现</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QLabel::mouseMoveEvent</span><span class="params">(QMouseEvent *ev)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">      <span class="comment">// 判断是否是左键按下</span></span><br><span class="line">    <span class="keyword">if</span>(ev-&gt;<span class="built_in">buttons</span>() &amp; Qt::LeftButton)&#123;</span><br><span class="line">        QString str = <span class="built_in">QString</span>(<span class="string">&quot;move :x = %1,y = %2&quot;</span>).<span class="built_in">arg</span>(ev-&gt;<span class="built_in">x</span>()).<span class="built_in">arg</span>(ev-&gt;<span class="built_in">y</span>());</span><br><span class="line">        <span class="built_in">qDebug</span>()&lt;&lt;str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-QTreeWidget"><a href="#4-QTreeWidget" class="headerlink" title="4. QTreeWidget"></a>4. QTreeWidget</h3><p>​    树控件，一般用来显示层次结构</p>
+<h3 id="1-6-鼠标追踪"><a href="#1-6-鼠标追踪" class="headerlink" title="1.6 鼠标追踪"></a>1.6 鼠标追踪</h3><p>​    直接在.cpp中实现即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置鼠标追踪 -- 默认为false</span></span><br><span class="line"><span class="built_in">setMouseTracking</span>(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-定时器"><a href="#2-定时器" class="headerlink" title="2. 定时器"></a>2. 定时器</h2><h3 id="2-1-timerEvent"><a href="#2-1-timerEvent" class="headerlink" title="2.1 timerEvent"></a>2.1 timerEvent</h3><p>​    重写timerEvent实现，这个不太方便，一般用第二个，所以不展开</p>
+<h3 id="2-2-QTimer"><a href="#2-2-QTimer" class="headerlink" title="2.2 QTimer"></a>2.2 QTimer</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建定时器并加入对象树</span></span><br><span class="line">QTimer *timer = <span class="keyword">new</span> <span class="built_in">QTimer</span>(<span class="keyword">this</span>);</span><br><span class="line"><span class="comment">// 启动定时器 参数为ms，即每500ms触发一次定时器</span></span><br><span class="line">timer-&gt;<span class="built_in">start</span>(<span class="number">500</span>);</span><br><span class="line"><span class="comment">// 将定时器与label链接，每当定时器时间耗尽，就发出信号，使label的内容即数字加1</span></span><br><span class="line"><span class="built_in">connect</span>(timer,&amp;QTimer::timeout,<span class="keyword">this</span>,[=]()&#123;</span><br><span class="line">    <span class="comment">// static 是为了不在栈上创建 - 在栈上创建执行完之后就会释放</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// QString::number() -- 将数字转为QString类型</span></span><br><span class="line">    ui-&gt;label_1-&gt;<span class="built_in">setText</span>(QString::<span class="built_in">number</span>(num++));</span><br><span class="line">&#125;);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 点击按钮 停止定时器</span></span><br><span class="line"><span class="built_in">connect</span>(ui-&gt;btn,&amp;QPushButton::clicked,<span class="keyword">this</span>,[=]()&#123;</span><br><span class="line">    timer-&gt;<span class="built_in">stop</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-事件分发器"><a href="#3-事件分发器" class="headerlink" title="3. 事件分发器"></a>3. 事件分发器</h2><p>​    APP的事件并不是直接到mousePressEvent等的，而是会经过event，event将事件对应向下分发，所以可以对事件进行拦截；</p>
+<p>​    返回值为bool，如果返回的是true，即表示用户自己处理这个事件，不再向下分发</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">event</span><span class="params">(QEvent *e)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-事件过滤器"><a href="#4-事件过滤器" class="headerlink" title="4. 事件过滤器"></a>4. 事件过滤器</h2><p>​    在事件分发器之前还有一个事件过滤器，可以在程序分发event事件之前做高级拦截</p>
 <p>步骤：</p>
 <ol>
-<li>设置表头或者说水平头 - setHeaderLabels</li>
-<li>创建根节点 - QTreeWidgetItem *topItem1</li>
-<li>将根节点加入到QTreeWidget - addTopLevelItem(topItem1)</li>
-<li>创建子节点 -  QTreeWidgetItem * childItemLevel1</li>
-<li>将子节点加入到对应的根节点 - topItem1-&gt;addChild(childItemLevel1)</li>
+<li><p>给控件安装事件过滤器</p>
+</li>
+<li><p>重写eventfilter事件</p>
+<p>了解即可</p>
+</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置水平头 </span></span><br><span class="line">ui-&gt;treeWidget-&gt;<span class="built_in">setHeaderLabels</span>(<span class="built_in">QStirngList</span>()&lt;&lt;<span class="string">&quot;英雄&quot;</span>&lt;&lt;<span class="string">&quot;Q技能&quot;</span>&lt;&lt;<span class="string">&quot;大招&quot;</span>);</span><br><span class="line"><span class="comment">// 创建根节点</span></span><br><span class="line">QTreeWidgetItem *investigationItem = <span class="keyword">new</span> <span class="built_in">QTreeWidgetItem</span>(<span class="built_in">QStringList</span>()&lt;&lt;<span class="string">&quot;侦察位&quot;</span>);</span><br><span class="line">QTreeWidgetItem *informationItem = <span class="keyword">new</span> <span class="built_in">QTreeWidgetItem</span>(<span class="built_in">QStringList</span>()&lt;&lt;<span class="string">&quot;信息位&quot;</span>);</span><br><span class="line">QTreeWidgetItem *auxiliaryItem = <span class="keyword">new</span> <span class="built_in">QTreeWidgetItem</span>(<span class="built_in">QStringList</span>()&lt;&lt;<span class="string">&quot;辅助位&quot;</span>);</span><br><span class="line"><span class="comment">// 将根节点加入treeWidget</span></span><br><span class="line">ui-&gt;treeWidget-&gt;<span class="built_in">addTopLevelItem</span>(investigationItem);</span><br><span class="line">ui-&gt;treeWidget-&gt;<span class="built_in">addTopLevelItem</span>(informationItem);</span><br><span class="line">ui-&gt;treeWidget-&gt;<span class="built_in">addTopLevelItem</span>(auxiliaryItem);</span><br><span class="line"><span class="comment">// 创建子节点</span></span><br><span class="line">QStringList legend_evil_list;</span><br><span class="line">legend_evil_list&lt;&lt;<span class="string">&quot;恶灵&quot;</span>&lt;&lt;<span class="string">&quot;相位移动&quot;</span>&lt;&lt;<span class="string">&quot;传送门&quot;</span>;</span><br><span class="line">QTreeWidgetItem *legend_evil = <span class="keyword">new</span> <span class="built_in">QTreeWidgetItem</span>(legend_evil_list);</span><br><span class="line"><span class="comment">// 将子节点加入对应的根节点</span></span><br><span class="line">investigationItem-&gt;<span class="built_in">addChild</span>(legend_evil);</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-QTableWidget"><a href="#5-QTableWidget" class="headerlink" title="5. QTableWidget"></a>5. QTableWidget</h2><p>步骤：</p>
-<ol>
-<li>设置列数</li>
-<li>设置水平表头</li>
-<li>设置行数</li>
-<li>设置正文 – 表格中的数据</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置列数</span></span><br><span class="line">ui-&gt;tableWidget-&gt;<span class="built_in">setColumnCount</span>(<span class="number">3</span>);</span><br><span class="line"><span class="comment">// 设置水平表头</span></span><br><span class="line">ui-&gt;tableWidget-&gt;<span class="built_in">setHorizontalHeaderLabels</span>(<span class="built_in">QStringList</span>()&lt;&lt;<span class="string">&quot;姓名&quot;</span>&lt;&lt;<span class="string">&quot;性别&quot;</span>&lt;&lt;<span class="string">&quot;年龄&quot;</span>);</span><br><span class="line"><span class="comment">// 设置行数</span></span><br><span class="line">ui-&gt;tableWidget-&gt;<span class="built_in">setRowCount</span>(<span class="number">5</span>);</span><br><span class="line"><span class="comment">// 设置正文 -- 表格中的数据</span></span><br><span class="line"><span class="comment">// i,j分别为行、列数 -- 从0开始</span></span><br><span class="line"><span class="comment">// int装为QString -- QString::number()</span></span><br><span class="line">ui-&gt;tableWidget-&gt;<span class="built_in">setItem</span>(i,j,<span class="keyword">new</span> <span class="built_in">QTableWidgetItem</span>(<span class="string">&quot;张三&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-其他控件"><a href="#6-其他控件" class="headerlink" title="6. 其他控件"></a>6. 其他控件</h2><h3 id="6-1-容器"><a href="#6-1-容器" class="headerlink" title="6.1 容器"></a>6.1 容器</h3><h4 id="6-1-1-QScrollArea"><a href="#6-1-1-QScrollArea" class="headerlink" title="6.1.1 QScrollArea"></a>6.1.1 QScrollArea</h4><p>​    滚动条</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-
-<h4 id="6-1-2-QToolBox"><a href="#6-1-2-QToolBox" class="headerlink" title="6.1.2 QToolBox"></a>6.1.2 QToolBox</h4><p>​    文本可以通过<strong>currentItemText</strong>属性修改</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-1-3-QTabWidget"><a href="#6-1-3-QTabWidget" class="headerlink" title="6.1.3 QTabWidget"></a>6.1.3 QTabWidget</h4><p>​    类似网页</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-1-4-QStackWidget"><a href="#6-1-4-QStackWidget" class="headerlink" title="6.1.4 QStackWidget"></a>6.1.4 QStackWidget</h4><p>​    栈容器，可以实现点击不同按钮显示不同的页面，按钮链接connect栈容器，通过设置currentIndex - setCurrentIndex实现切换页面</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置currentIndex切换页面 -- 参数为int类型</span></span><br><span class="line"><span class="comment">// 也可以用这个setCurrentIndex来设置最初的显示页面</span></span><br><span class="line">ui-&gt;stackWidget-&gt;<span class="built_in">setCurrentIndex</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-2-输入控件"><a href="#6-2-输入控件" class="headerlink" title="6.2 输入控件"></a>6.2 输入控件</h3><h4 id="6-2-1-QComboBox"><a href="#6-2-1-QComboBox" class="headerlink" title="6.2.1 QComboBox"></a>6.2.1 QComboBox</h4><p>​    下拉框</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加item</span></span><br><span class="line">ui-&gt;comboBox-&gt;<span class="built_in">addItem</span>(<span class="string">&quot;添加到下拉框的内容&quot;</span>);</span><br><span class="line"><span class="comment">// 可以通过setCurrentIndex来设置显示的选项 -- 参数为int类型</span></span><br><span class="line">ui-&gt;comboBox-&gt;<span class="built_in">setCurrentIndex</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-
-<h4 id="6-2-1-QLineEdit"><a href="#6-2-1-QLineEdit" class="headerlink" title="6.2.1 QLineEdit"></a>6.2.1 QLineEdit</h4><p>​    单行输入框，可以设置输入模式 – echoMode</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-2-2-QTextEdit"><a href="#6-2-2-QTextEdit" class="headerlink" title="6.2.2 QTextEdit"></a>6.2.2 QTextEdit</h4><p>​    多行输入框，<strong>支持设置字体颜色、倾斜、加粗</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-2-3-QPlainTextEdit"><a href="#6-2-3-QPlainTextEdit" class="headerlink" title="6.2.3 QPlainTextEdit"></a>6.2.3 QPlainTextEdit</h4><p>​    多行输入框，<strong>不支持</strong>字体<strong>风格的设置</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-2-4-QSpinBox"><a href="#6-2-4-QSpinBox" class="headerlink" title="6.2.4 QSpinBox"></a>6.2.4 QSpinBox</h4><p>​    数字加减 - <strong>int</strong>类型</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-2-5-QDoubleSpinBox"><a href="#6-2-5-QDoubleSpinBox" class="headerlink" title="6.2.5 QDoubleSpinBox"></a>6.2.5 QDoubleSpinBox</h4><p>​    支持<strong>小数</strong>加减</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-2-6-QHorizontalScrollBar"><a href="#6-2-6-QHorizontalScrollBar" class="headerlink" title="6.2.6 QHorizontalScrollBar"></a>6.2.6 QHorizontalScrollBar</h4><p>​    水平滚动条</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-2-7-QVerticalScrollBar"><a href="#6-2-7-QVerticalScrollBar" class="headerlink" title="6.2.7 QVerticalScrollBar"></a>6.2.7 QVerticalScrollBar</h4><p>​    垂直滚动条</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-2-8-QHorizontalSlider"><a href="#6-2-8-QHorizontalSlider" class="headerlink" title="6.2.8 QHorizontalSlider"></a>6.2.8 QHorizontalSlider</h4><p>​    水平滚动块 – 可以配合spinBox使用</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="6-2-9-QVerticalSlider"><a href="#6-2-9-QVerticalSlider" class="headerlink" title="6.2.9 QVerticalSlider"></a>6.2.9 QVerticalSlider</h4><p>​    垂直滚动块 – 可以配合spinBox使用</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="6-3-显示控件"><a href="#6-3-显示控件" class="headerlink" title="6.3. 显示控件"></a>6.3. 显示控件</h3><h4 id="6-3-1-QLabel"><a href="#6-3-1-QLabel" class="headerlink" title="6.3.1 QLabel"></a>6.3.1 QLabel</h4><p>​    标签，可以显示文字、图片、动图</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显示图片</span></span><br><span class="line">ui-&gt;label-&gt;<span class="built_in">setPixmap</span>(<span class="built_in">QPixmap</span>(<span class="string">&quot;:+前缀名+文件名&quot;</span>));</span><br><span class="line"><span class="comment">// 显示动图</span></span><br><span class="line">QMovie *movie = <span class="keyword">new</span> <span class="built_in">QMovie</span>(<span class="string">&quot;:+前缀名+文件名&quot;</span>);</span><br><span class="line">ui-&gt;label-&gt;<span class="built_in">setMovie</span>(movie);</span><br><span class="line"><span class="comment">// 播放动图</span></span><br><span class="line">movie-&gt;<span class="built_in">start</span>();</span><br></pre></td></tr></table></figure>
 
       
 
@@ -285,18 +223,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-5/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-6/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          QT视频学习-5
+          QT视频学习-6
         
       </div>
     </a>
   
   
-    <a href="/2021/10/19/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">QT视频学习-3</div>
+    <a href="/2021/10/20/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">QT视频学习-4</div>
       <i class="icon-circle-right"></i>
     </a>
   

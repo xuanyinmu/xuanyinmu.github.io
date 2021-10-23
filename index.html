@@ -136,6 +136,277 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-QT视频学习-7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-7/">QT视频学习-7</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-7/" class="archive-article-date">
+  	<time datetime="2021-10-23T10:45:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="QT视频学习-7"><a href="#QT视频学习-7" class="headerlink" title="QT视频学习-7"></a>QT视频学习-7</h1><h2 id="1-QFile"><a href="#1-QFile" class="headerlink" title="1. QFile"></a>1. QFile</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 点击按钮，弹出文件对话框</span></span><br><span class="line"><span class="built_in">connect</span>(ui-&gt;fileBtn,&amp;QPushButton::clicked,<span class="keyword">this</span>,[=]()&#123;</span><br><span class="line">    QString path = QFileDialog::<span class="built_in">getOPenFileName</span>(<span class="keyword">this</span>,<span class="string">&quot;打开文件&quot;</span>,<span class="string">&quot;默认打开路径&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 编码格式</span></span><br><span class="line">    QTextCodec *codec = QTextCodec::<span class="built_in">codecForName</span>(<span class="string">&quot;gbk&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// QFile 默认支持的格式是utf-8</span></span><br><span class="line">    <span class="comment">// 参数是文件路径</span></span><br><span class="line">    QFile <span class="built_in">file</span>(path);</span><br><span class="line">    <span class="comment">// 设置打开方式 -- 只读 只写 读写</span></span><br><span class="line">    file.<span class="built_in">open</span>(QIODevice::ReadOnly);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将文件数据存到字节数组中</span></span><br><span class="line">    <span class="comment">// 可以一次读完readAll() 也可以按行读readLine</span></span><br><span class="line">    QByteArray array = file.<span class="built_in">readAll</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将数据放入textEdit中</span></span><br><span class="line">    ui-&gt;textEdit-&gt;<span class="built_in">setText</span>(codec-&gt;<span class="built_in">toUnicode</span>(array));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 关闭文件</span></span><br><span class="line">    file.<span class="built_in">close</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 写文件</span></span><br><span class="line">    file.<span class="built_in">open</span>(QIODevice::Append);</span><br><span class="line">    file.<span class="built_in">write</span>(<span class="string">&quot;追加内容&quot;</span>);</span><br><span class="line">    file.<span class="built_in">close</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-QFileInfo"><a href="#2-QFileInfo" class="headerlink" title="2. QFileInfo"></a>2. QFileInfo</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取文件信息</span></span><br><span class="line"><span class="comment">// 参数为文件路径</span></span><br><span class="line"><span class="function">QFileInfo <span class="title">info</span><span class="params">(path)</span></span>;</span><br><span class="line"><span class="comment">// 文件大小 -- 字节</span></span><br><span class="line">info.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">// 后缀</span></span><br><span class="line">info.<span class="built_in">suffix</span>();</span><br><span class="line"><span class="comment">// 名称</span></span><br><span class="line">info.<span class="built_in">fileName</span>();</span><br><span class="line"><span class="comment">// 路径</span></span><br><span class="line">info.<span class="built_in">filePath</span>();</span><br><span class="line"><span class="comment">// 创建日期 -- 格式化</span></span><br><span class="line">info.<span class="built_in">created</span>().<span class="built_in">toString</span>(<span class="string">&quot;yyyy/MM/dd hh:mm:ss&quot;</span>);</span><br><span class="line"><span class="comment">// 最后修改日期 -- 格式化</span></span><br><span class="line">info.<span class="built_in">lastModified</span>().<span class="built_in">toString</span>(<span class="string">&quot;yyyy/MM/dd hh:mm:ss&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-QT视频学习-6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-6/">QT视频学习-6</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-6/" class="archive-article-date">
+  	<time datetime="2021-10-23T09:58:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="QT视频学习-6"><a href="#QT视频学习-6" class="headerlink" title="QT视频学习-6"></a>QT视频学习-6</h1><h2 id="1-绘图事件"><a href="#1-绘图事件" class="headerlink" title="1. 绘图事件"></a>1. 绘图事件</h2><p>​    重写paintEvent函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h 中声明</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">paintEvent</span><span class="params">(QPaintEvent *)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// .cpp中实现</span></span><br><span class="line"><span class="comment">// 实例化画家 参数为绘图设备</span></span><br><span class="line"><span class="function">QPainter <span class="title">painter</span><span class="params">(<span class="keyword">this</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//////////// 高级设置 ////////////</span></span><br><span class="line"><span class="comment">// 设置抗锯齿</span></span><br><span class="line">painter.<span class="built_in">setRenderHint</span>(QPainter::Antialiasing);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置画笔的风格 -- 需要设置在绘制前面</span></span><br><span class="line"><span class="comment">// r g b</span></span><br><span class="line"><span class="function">QPen <span class="title">pen</span><span class="params">(QColor(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>))</span></span>;</span><br><span class="line"><span class="comment">// 笔刷宽度</span></span><br><span class="line">pen.<span class="built_in">setWidth</span>(<span class="number">3</span>);</span><br><span class="line"><span class="comment">// 设置画家使用这个画笔</span></span><br><span class="line">painter.<span class="built_in">setPen</span>(pen);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置画刷 -- 填充颜色用</span></span><br><span class="line"><span class="comment">// 参数为 颜色</span></span><br><span class="line"><span class="function">QBrush <span class="title">brush</span><span class="params">(Qt::cyan)</span></span>;</span><br><span class="line">painter.<span class="built_in">setBrush</span>(brush);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 画线 -- 参数为起点坐标和终点坐标</span></span><br><span class="line">painter.<span class="built_in">drawLine</span>(<span class="built_in">QPoint</span>(<span class="number">0</span>,<span class="number">0</span>),<span class="built_in">QPoint</span>(<span class="number">100</span>,<span class="number">100</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//////////// 高级设置 ////////////</span></span><br><span class="line"><span class="comment">// 移动画家</span></span><br><span class="line">painter.<span class="built_in">translate</span>(<span class="number">100</span>,<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 保存画家状态 -- 可以用restore来还原到此时的状态</span></span><br><span class="line">painter.<span class="built_in">save</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 画椭圆 -- 起点坐标 x半径 y半径</span></span><br><span class="line">painter.<span class="built_in">drawEllipse</span>(<span class="built_in">QPoint</span>(<span class="number">100</span>,<span class="number">100</span>),<span class="number">50</span>,<span class="number">50</span>);</span><br><span class="line"><span class="comment">// 画矩形 -- (x坐标 y坐标 宽 高) </span></span><br><span class="line">painter.<span class="built_in">drawRect</span>(<span class="built_in">QRect</span>(<span class="number">20</span>,<span class="number">20</span>,<span class="number">50</span>,<span class="number">50</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//////////// 高级设置 ////////////</span></span><br><span class="line"><span class="comment">// 还原画家状态</span></span><br><span class="line">painter.<span class="built_in">restore</span>();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 画文字 -- 矩形(x坐标 y坐标 宽 高) QString</span></span><br><span class="line">painter.<span class="built_in">drawText</span>(<span class="built_in">QRect</span>(<span class="number">10</span>,<span class="number">200</span>,<span class="number">150</span>,<span class="number">50</span>),<span class="string">&quot;绘制的内容&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-手动调用绘图事件"><a href="#2-手动调用绘图事件" class="headerlink" title="2. 手动调用绘图事件"></a>2. 手动调用绘图事件</h2><p>​    可以绘制图片或动图</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数为左上角的 x y 图片资源</span></span><br><span class="line">painter.<span class="built_in">drawPixmap</span>(<span class="number">20</span>,<span class="number">0</span>,<span class="built_in">QPixmap</span>(<span class="string">&quot;:前缀名文件名&quot;</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 点击按钮 移动图片</span></span><br><span class="line"><span class="built_in">connect</span>(ui-&gt;btn,&amp;QPushButton::clicked,<span class="keyword">this</span>,[=]()&#123;</span><br><span class="line">    <span class="comment">// posX是图片的左上角x坐标</span></span><br><span class="line">    posX += <span class="number">20</span>;</span><br><span class="line">    <span class="comment">// 重新绘制图片</span></span><br><span class="line">    <span class="built_in">update</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果超出屏幕 重新开始</span></span><br><span class="line"><span class="comment">// this-&gt;width() -- 窗口宽度</span></span><br><span class="line"><span class="keyword">if</span>(posX &gt; <span class="keyword">this</span>-&gt;<span class="built_in">width</span>())</span><br><span class="line">&#123;</span><br><span class="line">    posX = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-绘图设备"><a href="#3-绘图设备" class="headerlink" title="3. 绘图设备"></a>3. 绘图设备</h2><h3 id="3-1-QPixmap"><a href="#3-1-QPixmap" class="headerlink" title="3.1 QPixmap"></a>3.1 QPixmap</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 准备绘制的图片 宽 高</span></span><br><span class="line"><span class="function">QPixmap <span class="title">pix</span><span class="params">(<span class="number">300</span>,<span class="number">300</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// .... 画家画图</span></span><br><span class="line"></span><br><span class="line">pix.<span class="built_in">save</span>(<span class="string">&quot;磁盘路径&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-QBitmap"><a href="#3-2-QBitmap" class="headerlink" title="3.2 QBitmap"></a>3.2 QBitmap</h3><h3 id="3-3-QImage"><a href="#3-3-QImage" class="headerlink" title="3.3 QImage"></a>3.3 QImage</h3><p>​    可以对<strong>像素</strong>进行访问</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 准备绘制的图片 宽 高 所用的色域或者说色彩</span></span><br><span class="line"><span class="function">QImage <span class="title">img</span><span class="params">(<span class="number">300</span>,<span class="number">300</span>,QImage::Format_RGB32)</span></span>;</span><br><span class="line"><span class="comment">// 填充背景</span></span><br><span class="line">img.<span class="built_in">fill</span>(Qt::white);</span><br><span class="line"></span><br><span class="line"><span class="comment">// .... 画家画图</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 保存</span></span><br><span class="line">img.<span class="built_in">save</span>(<span class="string">&quot;磁盘路径&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改像素</span></span><br><span class="line">QImage img;</span><br><span class="line">img.<span class="built_in">load</span>(<span class="string">&quot;:前缀名文件名&quot;</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">100</span>;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        QRgb value = <span class="built_in">qRgb</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="comment">// 用setPixel对像素进行修改 参数为要修改的x坐标 y坐标 颜色</span></span><br><span class="line">        img.<span class="built_in">setPixel</span>(i,j,value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-QPicture"><a href="#3-4-QPicture" class="headerlink" title="3.4 QPicture"></a>3.4 QPicture</h3><p>​    可以记录绘图指令和重新绘图</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">QPicture pic;</span><br><span class="line">QPainter painter;</span><br><span class="line"><span class="comment">// 开始往pic上绘图</span></span><br><span class="line">pianter.<span class="built_in">begin</span>(&amp;pic);</span><br><span class="line"></span><br><span class="line"><span class="comment">// .... 画家画图</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 结束绘图</span></span><br><span class="line">pianter.<span class="built_in">end</span>();</span><br><span class="line"><span class="comment">// 保存 -- 文件后缀名可以随意 随意编都行</span></span><br><span class="line">pic.<span class="built_in">save</span>(<span class="string">&quot;磁盘路径&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 重现绘图指令</span></span><br><span class="line">QPicture pic;</span><br><span class="line">pic.<span class="built_in">load</span>(<span class="string">&quot;保存的文件路径&quot;</span>);</span><br><span class="line">painter.<span class="built_in">drawPicture</span>(<span class="number">0</span>,<span class="number">0</span>,pic);</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-QT视频学习-5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-5/">QT视频学习-5</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-5/" class="archive-article-date">
+  	<time datetime="2021-10-23T08:48:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="QT视频学习-5"><a href="#QT视频学习-5" class="headerlink" title="QT视频学习-5"></a>QT视频学习-5</h1><h2 id="1-鼠标事件"><a href="#1-鼠标事件" class="headerlink" title="1. 鼠标事件"></a>1. 鼠标事件</h2><h3 id="1-1-鼠标进入"><a href="#1-1-鼠标进入" class="headerlink" title="1.1 鼠标进入"></a>1.1 鼠标进入</h3><p>​    重写enterEvent()函数，在.h中声明，.cpp中实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">enterEvent</span><span class="params">(QEvent *event)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-鼠标离开"><a href="#1-2-鼠标离开" class="headerlink" title="1.2 鼠标离开"></a>1.2 鼠标离开</h3><p>​    重写leaveEvent()函数，在.h中声明，.cpp中实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h中声明</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leaveEvent</span><span class="params">(QEvent *)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-鼠标按下"><a href="#1-3-鼠标按下" class="headerlink" title="1.3 鼠标按下"></a>1.3 鼠标按下</h3><p>​    虚函数，需要实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h中声明</span></span><br><span class="line"><span class="comment">// virtual 可以不写</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mousePressEvent</span><span class="params">(QMouseEvent *ev)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// .cpp中实现 -- 此处用QLabel</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QLabel::mousePressEvent</span><span class="params">(QMouseEvent *ev)</span></span>&#123;</span><br><span class="line">    <span class="comment">// ev中有各种信息 如相对位置x(),y() 全局位置globalX(),globalY()</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 判断是否是左键按下 -- 释放与此相同</span></span><br><span class="line">    <span class="keyword">if</span>(ev-&gt;<span class="built_in">button</span>() == Qt::LeftButton)</span><br><span class="line">    &#123;</span><br><span class="line">        QString str = <span class="built_in">QString</span>(<span class="string">&quot;鼠标按下，x=%1，y=2%&quot;</span>).<span class="built_in">arg</span>(ev-&gt;<span class="built_in">x</span>()).<span class="built_in">arg</span>(ev-&gt;<span class="built_in">y</span>());</span><br><span class="line">    	<span class="built_in">qDebug</span>()&lt;&lt;str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-鼠标释放"><a href="#1-4-鼠标释放" class="headerlink" title="1.4 鼠标释放"></a>1.4 鼠标释放</h3><p>​    虚函数，需要实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h中声明</span></span><br><span class="line"><span class="comment">// virtual 可以不写</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mouseReleaseEvent</span><span class="params">(QMouseEvent *ev)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-鼠标移动"><a href="#1-5-鼠标移动" class="headerlink" title="1.5 鼠标移动"></a>1.5 鼠标移动</h3><p>​    虚函数，需要实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h中声明</span></span><br><span class="line"><span class="comment">// virtual 可以不写</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">mouseMoveEvent</span><span class="params">(QMouseEvent *ev)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// .cpp中实现</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QLabel::mouseMoveEvent</span><span class="params">(QMouseEvent *ev)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">      <span class="comment">// 判断是否是左键按下</span></span><br><span class="line">    <span class="keyword">if</span>(ev-&gt;<span class="built_in">buttons</span>() &amp; Qt::LeftButton)&#123;</span><br><span class="line">        QString str = <span class="built_in">QString</span>(<span class="string">&quot;move :x = %1,y = %2&quot;</span>).<span class="built_in">arg</span>(ev-&gt;<span class="built_in">x</span>()).<span class="built_in">arg</span>(ev-&gt;<span class="built_in">y</span>());</span><br><span class="line">        <span class="built_in">qDebug</span>()&lt;&lt;str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6-鼠标追踪"><a href="#1-6-鼠标追踪" class="headerlink" title="1.6 鼠标追踪"></a>1.6 鼠标追踪</h3><p>​    直接在.cpp中实现即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置鼠标追踪 -- 默认为false</span></span><br><span class="line"><span class="built_in">setMouseTracking</span>(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-定时器"><a href="#2-定时器" class="headerlink" title="2. 定时器"></a>2. 定时器</h2><h3 id="2-1-timerEvent"><a href="#2-1-timerEvent" class="headerlink" title="2.1 timerEvent"></a>2.1 timerEvent</h3><p>​    重写timerEvent实现，这个不太方便，一般用第二个，所以不展开</p>
+<h3 id="2-2-QTimer"><a href="#2-2-QTimer" class="headerlink" title="2.2 QTimer"></a>2.2 QTimer</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建定时器并加入对象树</span></span><br><span class="line">QTimer *timer = <span class="keyword">new</span> <span class="built_in">QTimer</span>(<span class="keyword">this</span>);</span><br><span class="line"><span class="comment">// 启动定时器 参数为ms，即每500ms触发一次定时器</span></span><br><span class="line">timer-&gt;<span class="built_in">start</span>(<span class="number">500</span>);</span><br><span class="line"><span class="comment">// 将定时器与label链接，每当定时器时间耗尽，就发出信号，使label的内容即数字加1</span></span><br><span class="line"><span class="built_in">connect</span>(timer,&amp;QTimer::timeout,<span class="keyword">this</span>,[=]()&#123;</span><br><span class="line">    <span class="comment">// static 是为了不在栈上创建 - 在栈上创建执行完之后就会释放</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// QString::number() -- 将数字转为QString类型</span></span><br><span class="line">    ui-&gt;label_1-&gt;<span class="built_in">setText</span>(QString::<span class="built_in">number</span>(num++));</span><br><span class="line">&#125;);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 点击按钮 停止定时器</span></span><br><span class="line"><span class="built_in">connect</span>(ui-&gt;btn,&amp;QPushButton::clicked,<span class="keyword">this</span>,[=]()&#123;</span><br><span class="line">    timer-&gt;<span class="built_in">stop</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-事件分发器"><a href="#3-事件分发器" class="headerlink" title="3. 事件分发器"></a>3. 事件分发器</h2><p>​    APP的事件并不是直接到mousePressEvent等的，而是会经过event，event将事件对应向下分发，所以可以对事件进行拦截；</p>
+<p>​    返回值为bool，如果返回的是true，即表示用户自己处理这个事件，不再向下分发</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">event</span><span class="params">(QEvent *e)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-事件过滤器"><a href="#4-事件过滤器" class="headerlink" title="4. 事件过滤器"></a>4. 事件过滤器</h2><p>​    在事件分发器之前还有一个事件过滤器，可以在程序分发event事件之前做高级拦截</p>
+<p>步骤：</p>
+<ol>
+<li><p>给控件安装事件过滤器</p>
+</li>
+<li><p>重写eventfilter事件</p>
+<p>了解即可</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/23/QT%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0-5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-QT视频学习-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1084,238 +1355,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/09/05/QT%E5%AD%A6%E4%B9%A0-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VTK学习-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-2/">VTK学习-2</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-2/" class="archive-article-date">
-  	<time datetime="2021-09-02T15:02:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="VTK学习-2"><a href="#VTK学习-2" class="headerlink" title="VTK学习-2"></a>VTK学习-2</h1><h2 id="1-pipeline简介"><a href="#1-pipeline简介" class="headerlink" title="1.pipeline简介"></a>1.pipeline简介</h2><p><strong>VTK的pipeline主要用于读取和创造数据，一般是为Render Engine做准备工作</strong></p>
-<p><strong>采用数据流的方法将数据信息转换为图形数据，主要涉及两个类：vtkDataObject、vtkAlgorithm</strong></p>
-<h2 id="2-vtkDataObject、vtkAlgorithm"><a href="#2-vtkDataObject、vtkAlgorithm" class="headerlink" title="2.vtkDataObject、vtkAlgorithm"></a>2.vtkDataObject、vtkAlgorithm</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">VTK</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VTK学习-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-1/">VTK学习-1</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-1/" class="archive-article-date">
-  	<time datetime="2021-09-02T15:01:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="VTK学习-1"><a href="#VTK学习-1" class="headerlink" title="VTK学习-1"></a>VTK学习-1</h1><p><strong>教程为csdn沈子恒VTK修炼之道</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// VTK可视化流程</span></span><br><span class="line"><span class="built_in">VTK</span>()</span><br><span class="line">&#123;</span><br><span class="line">    create a window;</span><br><span class="line">    create a renderer; <span class="comment">// 把renderer加入window</span></span><br><span class="line">    </span><br><span class="line">    create procedural geometry;</span><br><span class="line">    create a mapper; <span class="comment">// 把geometry加入mapper</span></span><br><span class="line">    create an actor; <span class="comment">// 把mapper加入actor</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 把actor加入renderer</span></span><br><span class="line">    window-&gt;<span class="built_in">render</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="1-类的继承"><a href="#1-类的继承" class="headerlink" title="1.类的继承"></a>1.类的继承</h2><h3 id="1-1几乎所有对象都源于超类vtkObject"><a href="#1-1几乎所有对象都源于超类vtkObject" class="headerlink" title="1.1几乎所有对象都源于超类vtkObject"></a>1.1几乎所有对象都源于超类vtkObject</h3><h3 id="1-2一些特定情况源于vtkObjectBase"><a href="#1-2一些特定情况源于vtkObjectBase" class="headerlink" title="1.2一些特定情况源于vtkObjectBase"></a>1.2一些特定情况源于vtkObjectBase</h3><h3 id="1-3构造函数采用保护类型"><a href="#1-3构造函数采用保护类型" class="headerlink" title="1.3构造函数采用保护类型"></a>1.3构造函数采用保护类型</h3><h2 id="2-创建对象"><a href="#2-创建对象" class="headerlink" title="2.创建对象"></a>2.创建对象</h2><h3 id="2-1可以采用智能指针防止内存泄漏"><a href="#2-1可以采用智能指针防止内存泄漏" class="headerlink" title="2.1可以采用智能指针防止内存泄漏"></a>2.1可以采用智能指针防止内存泄漏</h3><h2 id="3-运行类型信息"><a href="#3-运行类型信息" class="headerlink" title="3.运行类型信息"></a>3.运行类型信息</h2><h3 id="3-1GetClassName-得到VTK对象类型"><a href="#3-1GetClassName-得到VTK对象类型" class="headerlink" title="3.1GetClassName()得到VTK对象类型"></a>3.1GetClassName()得到VTK对象类型</h3><h3 id="3-2IsA-“vtkExampleClass”-判断是否是某个类的对象"><a href="#3-2IsA-“vtkExampleClass”-判断是否是某个类的对象" class="headerlink" title="3.2IsA(“vtkExampleClass”)判断是否是某个类的对象"></a>3.2IsA(“vtkExampleClass”)判断是否是某个类的对象</h3><h3 id="3-3Print-了解对象当前描述"><a href="#3-3Print-了解对象当前描述" class="headerlink" title="3.3Print()了解对象当前描述"></a>3.3Print()了解对象当前描述</h3><h2 id="4-渲染引擎"><a href="#4-渲染引擎" class="headerlink" title="4.渲染引擎"></a>4.渲染引擎</h2><h3 id="4-1vtkProp视图位置、尺寸、方向"><a href="#4-1vtkProp视图位置、尺寸、方向" class="headerlink" title="4.1vtkProp视图位置、尺寸、方向"></a>4.1vtkProp视图位置、尺寸、方向</h3><h3 id="4-2vtkProperty、vtkVolumeProp属性、体积属性"><a href="#4-2vtkProperty、vtkVolumeProp属性、体积属性" class="headerlink" title="4.2vtkProperty、vtkVolumeProp属性、体积属性"></a>4.2vtkProperty、vtkVolumeProp属性、体积属性</h3><p><strong>颜色、透明度、阴影、反射</strong></p>
-<h3 id="4-3vtkCamera"><a href="#4-3vtkCamera" class="headerlink" title="4.3vtkCamera"></a>4.3vtkCamera</h3><h3 id="4-4vtkRender-渲染器"><a href="#4-4vtkRender-渲染器" class="headerlink" title="4.4vtkRender 渲染器"></a>4.4vtkRender 渲染器</h3><p><strong>渲染器将道具、摄像机、灯光组成场景</strong></p>
-<p><strong>一个舞台可以构建多个渲染器对象，即多视窗</strong></p>
-<h3 id="4-5vtkRenderWindowInterrater-交互"><a href="#4-5vtkRenderWindowInterrater-交互" class="headerlink" title="4.5vtkRenderWindowInterrater 交互"></a>4.5vtkRenderWindowInterrater 交互</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">VTK</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/02/VTK%E5%AD%A6%E4%B9%A0-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VSCode插件辅助" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/02/VSCode%E6%8F%92%E4%BB%B6%E8%BE%85%E5%8A%A9/">VSCode插件辅助</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/02/VSCode%E6%8F%92%E4%BB%B6%E8%BE%85%E5%8A%A9/" class="archive-article-date">
-  	<time datetime="2021-09-02T14:54:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="VSCode插件"><a href="#VSCode插件" class="headerlink" title="VSCode插件"></a>VSCode插件</h1><h2 id="1-Chinese-中文汉化包"><a href="#1-Chinese-中文汉化包" class="headerlink" title="1.Chinese-中文汉化包"></a>1.Chinese-中文汉化包</h2><p>汉化</p>
-<h2 id="2-Open-in-Browser"><a href="#2-Open-in-Browser" class="headerlink" title="2.Open in Browser"></a>2.Open in Browser</h2><p>可以直接选择浏览器进行展示</p>
-<h2 id="3-Auto-Rename-Tag"><a href="#3-Auto-Rename-Tag" class="headerlink" title="3.Auto Rename Tag"></a>3.Auto Rename Tag</h2><p>自动对双标签的尾标签进行重命名</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/02/VSCode%E6%8F%92%E4%BB%B6%E8%BE%85%E5%8A%A9/">展开全文 >></a>
         </p>
       
 
